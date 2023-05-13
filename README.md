@@ -1,6 +1,8 @@
 ### controle-faculdade
 
-## Sequencia de comandos a ser executado 
+## Tecnologias usadas
+    * Fastify: Focado em desempenho e leve
+    * Prisma: ORM para o banco, complexa porem bem completa e com versionamento de migrations 
 
 # Trabalho final de Desenvolvimento web da Unochapeco
     Controle simples da empresa
