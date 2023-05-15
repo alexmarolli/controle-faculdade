@@ -13,6 +13,6 @@
     [] Logistica
     [] Clientes e Fornecedores
 
-## Fazer crud de todos os itens, e desenvolver front end também 
+## Fazer crud de todos os itens, e desenvolver frontend também 
 
 # Trabalho feito em grupo 
