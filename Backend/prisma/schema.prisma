@@ -18,7 +18,7 @@ senha String
 
 model Produto{
   id_produto Int @id
-  cod_barras String @max_length(50)
+  cod_barras String @db.VarChar(50)
   descricao Decimal
   valor_v Decimal
   valor_c Decimal
