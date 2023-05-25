@@ -6,35 +6,11 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
-model Usuario {
-id Int @id
-nome String
-senha String
-}
-
-model Produto{
-  id_produto Int @id
-  cod_barras String @db.VarChar(50)
+model produto{
+  id_produto Int @id @default(autoincrement())
   descricao Decimal
-  valor_v Decimal
-  valor_c Decimal
-  estoque Int
-}
-
-model Conta{
-  id_conta Int @id
-  nome String
-  Saldo Decimal
-}
-
-model Documento{
-  doc_controle Int @id
-  id_usuario Int
-  id_cliente Int
-  valor Decimal
-
 }

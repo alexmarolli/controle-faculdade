@@ -1,3 +1,5 @@
+import routes from './routes.js';
+
 const Fastify= require('fastify');
 const dotenv = require('dotenv');
 
