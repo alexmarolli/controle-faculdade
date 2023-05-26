@@ -1,9 +1,0 @@
-@HOST = http://localhost:8080
-
-#baixar extensão rest client pra conseguir testar (humao.rest-client)
-
-###
-# Exemplo Get
-GET {{HOST}}/produtos
-
-
