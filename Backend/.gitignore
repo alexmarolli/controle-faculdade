@@ -1,3 +1,6 @@
-node_modules
-# Keep environment variables out of version control
-.env
+Backend/node_modules/
+Frontend/node_modules/
+token.txt
+config.env
+node_modules/
+prisma/

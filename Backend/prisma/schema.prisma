@@ -28,7 +28,7 @@ model Produto{
 model Conta{
   id_conta Int @id
   nome String
-  Saldoo Decimal
+  Saldo Decimal
 }
 
 model Documento{
