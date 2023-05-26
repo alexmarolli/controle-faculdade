@@ -13,7 +13,7 @@ datasource db {
 model Usuario {
 id Int @id
 nome String
-senhaa String
+senha String
 }
 
 model Produto{
