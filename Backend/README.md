@@ -1,4 +1,7 @@
 ### controle-faculdade
+### Por favor leiam 
+    Vamos fazer todos no mesmo padrão, usando fastify e particinando codigo,
+    eu vou estar vendo pra fazer alguns layouts mas tenho toque então mantnham o codigo organizado 
 
 ## Tecnologias usadas
     * Fastify: Focado em desempenho e leve

@@ -11,30 +11,57 @@ datasource db {
 }
 
 model Usuario {
-id Int @id
-nome String
-senha String
+  id         Int          @id
+  nome       String
+  senha      String
+  Financeiro Financeiro[]
+  Fin_pago   Fin_pago[]
 }
 
-model Produto{
-  id_produto Int @id
+model Produto {
+  id_produto Int     @id
   cod_barras String
-  descricao Decimal
-  valor_v Decimal
-  valor_c Decimal
-  estoque Int
+  descricao  Decimal
+  valor_v    Decimal
+  valor_c    Decimal
+  estoque    Int
 }
 
-model Conta{
-  id_conta Int @id
-  nome String
-  Saldo Decimal
+model Conta {
+  id_conta Int     @id
+  nome     String
+  Saldo    Decimal
 }
 
-model Documento{
-  doc_controle Int @id
-  id_usuario Int
-  id_cliente Int
-  valor Decimal
+model Documento {
+  doc_controle Int          @id
+  id_usuario   Int
+  id_cliente   Int
+  valor        Decimal
+  Financeiro   Financeiro[]
+}
 
+model Financeiro {
+  fin_id                Int        @id @default(autoincrement())
+  documentoDoc_controle Int
+  usuarioId             Int
+  dt_create             DateTime   @default(now())
+  dt_vencimento         DateTime
+  pago                  Boolean    @default(false)
+  cancelado             Boolean    @default(false)
+  valor                 Decimal
+  documento             Documento  @relation(fields: [documentoDoc_controle], references: [doc_controle])
+  user                  Usuario    @relation(fields: [usuarioId], references: [id])
+  Fin_pago              Fin_pago[]
+}
+
+model Fin_pago {
+  pago_id          Int        @id @default(autoincrement())
+  financeiroFin_id Int
+  usuarioId        Int
+  dt_pago          DateTime   @default(now())
+  val_desc         Decimal
+  val_juros        Decimal
+  financeiro       Financeiro @relation(fields: [financeiroFin_id], references: [fin_id])
+  user             Usuario    @relation(fields: [usuarioId], references: [id])
 }
