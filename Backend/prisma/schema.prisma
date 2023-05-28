@@ -11,11 +11,12 @@ datasource db {
 }
 
 model Usuario {
-  id         Int          @id
+  id         Int          @id @default(autoincrement())
   nome       String
   senha      String
   Financeiro Financeiro[]
   Fin_pago   Fin_pago[]
+  Documento  Documento[]
 }
 
 model Produto {
@@ -35,10 +36,11 @@ model Conta {
 
 model Documento {
   doc_controle Int          @id
-  id_usuario   Int
+  usuarioId    Int
   id_cliente   Int
   valor        Decimal
   Financeiro   Financeiro[]
+  user         Usuario      @relation(fields: [usuarioId], references: [id])
 }
 
 model Financeiro {
