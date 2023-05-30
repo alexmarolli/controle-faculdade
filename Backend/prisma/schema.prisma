@@ -67,3 +67,12 @@ model Fin_pago {
   financeiro       Financeiro @relation(fields: [financeiroFin_id], references: [fin_id])
   user             Usuario    @relation(fields: [usuarioId], references: [id])
 }
+
+
+model Movimentacao {
+  mov_id     Int @id @default(autoincrement())
+  descricao  String
+  entrada    Boolean
+  saida      Boolean
+  quantidade Int
+}
