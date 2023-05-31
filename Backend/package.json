@@ -1,5 +1,6 @@
 {
   "name": "backend",
+  "type": "module",
   "version": "1.0.0",
   "description": "## Tecnologias usadas     * Fastify: Focado em desempenho e leve     * Prisma: ORM para o banco, complexa porem bem completa e com versionamento de migrations",
   "main": "index.js",
@@ -12,16 +13,15 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^4.14.1",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.1.0",
     "fastify": "^4.17.0"
   },
   "devDependencies": {
-    "@types/node": "^20.2.4",
     "node": "^20.2.0",
     "nodemon": "^2.0.22",
     "prisma": "^4.14.1",
     "ts-node": "^10.9.1",
-    "tsx": "^3.12.7",
-    "typescript": "^5.0.4"
+    "tsx": "^3.12.7"
+
   }
 }

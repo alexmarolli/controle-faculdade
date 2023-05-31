@@ -29,22 +29,38 @@ model Produto {
 }
 
 model Conta {
-  id_conta Int     @id
-  nome     String
-  Saldo    Decimal
+  id_conta  Int         @id
+  nome      String
+  Saldo     Decimal
+  Documento Documento[]
 }
 
 model Documento {
-  doc_controle Int          @id
-  usuarioId    Int
-  id_cliente   Int
-  valor        Decimal
-  Financeiro   Financeiro[]
-  user         Usuario      @relation(fields: [usuarioId], references: [id])
+  doc_controle  Int          @id
+  usuarioId     Int
+  id_cliente    Int
+  valor         Decimal
+  Financeiro    Financeiro[]
+  user          Usuario      @relation(fields: [usuarioId], references: [id])
+  conta         Conta        @relation(fields: [contaId_conta], references: [id_conta])
+  contaId_conta Int
+}
+
+model cliente {
+  cliente_id Int    @id @default(autoincrement())
+  cpfCnpj    String @unique
+  email      String
+  nome       String
+  telefone   String
+  endereco   String
+  numero     Int
+
+  Financeiro Financeiro[]
 }
 
 model Financeiro {
   fin_id                Int        @id @default(autoincrement())
+  Cliente_id            Int
   documentoDoc_controle Int
   usuarioId             Int
   dt_create             DateTime   @default(now())
@@ -54,16 +70,17 @@ model Financeiro {
   valor                 Decimal
   documento             Documento  @relation(fields: [documentoDoc_controle], references: [doc_controle])
   user                  Usuario    @relation(fields: [usuarioId], references: [id])
+  cliente               cliente    @relation(fields: [Cliente_id], references: [cliente_id])
   Fin_pago              Fin_pago[]
 }
 
 model Fin_pago {
-  pago_id          Int        @id @default(autoincrement())
-  financeiroFin_id Int
-  usuarioId        Int
-  dt_pago          DateTime   @default(now())
-  val_desc         Decimal
-  val_juros        Decimal
-  financeiro       Financeiro @relation(fields: [financeiroFin_id], references: [fin_id])
-  user             Usuario    @relation(fields: [usuarioId], references: [id])
+  pago_id    Int        @id @default(autoincrement())
+  Fin_id     Int
+  usuarioId  Int
+  dt_pago    DateTime   @default(now())
+  val_desc   Decimal
+  val_juros  Decimal
+  financeiro Financeiro @relation(fields: [Fin_id], references: [fin_id])
+  user       Usuario    @relation(fields: [usuarioId], references: [id])
 }

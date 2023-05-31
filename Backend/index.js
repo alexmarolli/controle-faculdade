@@ -1,23 +1,19 @@
-const Fastify= require('fastify')
-const dotenv = require('dotenv')
+import Fastify from'fastify';
+import dotnev from 'dotenv/config';
+import { routesUsuario}  from './src/Routes/usuario.js'
+import { routesFinananceiro } from './src/Routes/financeiro.js';
 
 const app=Fastify()
 
+routesUsuario(app);
+routesFinananceiro(app);
 
-dotenv.config( { path : 'config.env'} )
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3333
 
 
-app.get('/',function(request,reply){
-    reply.send({hello:'world!'})
-
-    
-})
-
-app.listen({port: PORT},function(err,address){
+app.listen({port: 3333},function(err,address){
     if(err){
-        app.log.error(err)
-        process.exit(1)
+        console.log(err)
     }else{
         console.log(`Servidor rodando na porta ${PORT}`)
     }
