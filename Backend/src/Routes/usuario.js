@@ -13,7 +13,7 @@ export async function routesUsuario(app){
         return user;
     })
 
-    app.post('/ainda_NS', async ()=>{
+    app.post('/new-user', async ()=>{
 
     })
 }
