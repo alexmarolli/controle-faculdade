@@ -5,15 +5,6 @@ CREATE TABLE "Usuario" (
     "senha" TEXT NOT NULL
 );
 
--- CreateTable
-CREATE TABLE "Produto" (
-    "id_produto" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "cod_barras" TEXT NOT NULL,
-    "descricao" DECIMAL NOT NULL,
-    "valor_v" DECIMAL NOT NULL,
-    "valor_c" DECIMAL NOT NULL,
-    "estoque" INTEGER NOT NULL
-);
 
 -- CreateTable
 CREATE TABLE "Conta" (
