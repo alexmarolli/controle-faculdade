@@ -19,20 +19,21 @@ model Usuario {
   Documento  Documento[]
 }
 
-model Produto {
-  id_produto Int     @id
-  cod_barras String
-  descricao  Decimal
-  valor_v    Decimal
-  valor_c    Decimal
-  estoque    Int
-}
 
 model Conta {
   id_conta  Int         @id
   nome      String
   Saldo     Decimal
   Documento Documento[]
+}
+
+model Produto {
+  id_produto Int     @id
+  cod_barras String
+  descricao  String
+  valor_v    Decimal
+  valor_c    Decimal
+  estoque    Int
 }
 
 model Documento {
