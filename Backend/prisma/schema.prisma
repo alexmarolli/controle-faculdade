@@ -63,6 +63,7 @@ model Financeiro {
   Cliente_id            Int
   documentoDoc_controle Int
   usuarioId             Int
+  forma_pagPag_id       Int
   dt_create             DateTime   @default(now())
   dt_vencimento         DateTime
   pago                  Boolean    @default(false)
@@ -72,6 +73,14 @@ model Financeiro {
   user                  Usuario    @relation(fields: [usuarioId], references: [id])
   cliente               cliente    @relation(fields: [Cliente_id], references: [cliente_id])
   Fin_pago              Fin_pago[]
+  forma_pag             forma_pag  @relation(fields: [forma_pagPag_id], references: [pag_id])
+}
+
+model forma_pag {
+  pag_id     Int          @id @default(autoincrement())
+  prazo      Boolean      @default(false)
+  descricao  String
+  Financeiro Financeiro[]
 }
 
 model Fin_pago {
@@ -83,13 +92,4 @@ model Fin_pago {
   val_juros  Decimal
   financeiro Financeiro @relation(fields: [Fin_id], references: [fin_id])
   user       Usuario    @relation(fields: [usuarioId], references: [id])
-}
-
-
-model Movimentacao {
-  mov_id     Int @id @default(autoincrement())
-  descricao  String
-  entrada    Boolean
-  saida      Boolean
-  quantidade Int
 }

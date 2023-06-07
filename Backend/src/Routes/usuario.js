@@ -16,4 +16,10 @@ export async function routesUsuario(app){
     app.post('/new-user', async ()=>{
 
     })
+    
+    app.post('/create',async=>{
+        const user = await prisma.usuario.create{
+            
+        }
+    })
 }
