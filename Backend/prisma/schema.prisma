@@ -19,7 +19,6 @@ model Usuario {
   Documento  Documento[]
 }
 
-
 model Conta {
   id_conta  Int         @id
   nome      String
@@ -28,23 +27,35 @@ model Conta {
 }
 
 model Produto {
-  id_produto Int     @id
+  id_produto Int        @id
   cod_barras String
   descricao  String
   valor_v    Decimal
   valor_c    Decimal
   estoque    Int
+  docItens   docItens[]
 }
 
 model Documento {
-  doc_controle  Int          @id
+  doc_controle  Int          @id @default(autoincrement())
   usuarioId     Int
   id_cliente    Int
   valor         Decimal
+  descricao     String
   Financeiro    Financeiro[]
   user          Usuario      @relation(fields: [usuarioId], references: [id])
   conta         Conta        @relation(fields: [contaId_conta], references: [id_conta])
   contaId_conta Int
+}
+
+model docItens {
+  item       Int      @id @default(autoincrement())
+  Id_produto Int
+  data       DateTime
+  valor_un   Decimal
+  valor_to   Decimal
+  quantidade Int
+  produto    Produto  @relation(fields: [Id_produto], references: [id_produto])
 }
 
 model cliente {
@@ -73,8 +84,8 @@ model Financeiro {
   documento             Documento  @relation(fields: [documentoDoc_controle], references: [doc_controle])
   user                  Usuario    @relation(fields: [usuarioId], references: [id])
   cliente               cliente    @relation(fields: [Cliente_id], references: [cliente_id])
-  Fin_pago              Fin_pago[]
   forma_pag             forma_pag  @relation(fields: [forma_pagPag_id], references: [pag_id])
+  Fin_pago              Fin_pago[]
 }
 
 model forma_pag {
