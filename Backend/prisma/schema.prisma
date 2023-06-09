@@ -20,10 +20,9 @@ model Usuario {
 }
 
 model Conta {
-  id_conta  Int         @id
-  nome      String
-  Saldo     Decimal
-  Documento Documento[]
+  id_conta Int     @id
+  nome     String
+  Saldo    Decimal
 }
 
 model Produto {
@@ -37,15 +36,19 @@ model Produto {
 }
 
 model Documento {
-  doc_controle  Int          @id @default(autoincrement())
-  usuarioId     Int
-  id_cliente    Int
-  valor         Decimal
-  descricao     String
-  Financeiro    Financeiro[]
-  user          Usuario      @relation(fields: [usuarioId], references: [id])
-  conta         Conta        @relation(fields: [contaId_conta], references: [id_conta])
-  contaId_conta Int
+  doc_controle    Int          @id @default(autoincrement())
+  usuarioId       Int
+  id_cliente      Int
+  // Pag_id       Int
+  //  saida        Boolean      @default(true)
+  //  data         DateTime     @default(now())
+  valor           Decimal
+  descricao       String
+  Financeiro      Financeiro[]
+  user            Usuario      @relation(fields: [usuarioId], references: [id])
+  //forma_pag    forma_pag    @relation(fields: [Pag_id], references: [pag_id])
+  forma_pag       forma_pag?   @relation(fields: [forma_pagPag_id], references: [pag_id])
+  forma_pagPag_id Int?
 }
 
 model docItens {
@@ -93,6 +96,7 @@ model forma_pag {
   prazo      Boolean      @default(false)
   descricao  String
   Financeiro Financeiro[]
+  Documento  Documento[]
 }
 
 model Fin_pago {
