@@ -36,19 +36,17 @@ model Produto {
 }
 
 model Documento {
-  doc_controle    Int          @id @default(autoincrement())
-  usuarioId       Int
-  id_cliente      Int
+  doc_controle Int          @id @default(autoincrement())
+  usuarioId    Int
+  id_cliente   Int
   // Pag_id       Int
   //  saida        Boolean      @default(true)
   //  data         DateTime     @default(now())
-  valor           Decimal
-  descricao       String
-  Financeiro      Financeiro[]
-  user            Usuario      @relation(fields: [usuarioId], references: [id])
+  valor        Decimal
+  descricao    String
+  user         Usuario      @relation(fields: [usuarioId], references: [id])
   //forma_pag    forma_pag    @relation(fields: [Pag_id], references: [pag_id])
-  forma_pag       forma_pag?   @relation(fields: [forma_pagPag_id], references: [pag_id])
-  forma_pagPag_id Int?
+  Financeiro   Financeiro[]
 }
 
 model docItens {
@@ -79,6 +77,7 @@ model Financeiro {
   documentoDoc_controle Int
   usuarioId             Int
   forma_pagPag_id       Int
+  debCred               Boolean
   dt_create             DateTime   @default(now())
   dt_vencimento         DateTime
   pago                  Boolean    @default(false)
@@ -96,7 +95,7 @@ model forma_pag {
   prazo      Boolean      @default(false)
   descricao  String
   Financeiro Financeiro[]
-  Documento  Documento[]
+  //Documento  Documento[]
 }
 
 model Fin_pago {

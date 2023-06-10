@@ -3,12 +3,14 @@ import dotnev from 'dotenv/config';
 import { routesUsuario}  from './src/Routes/usuario.js'
 import { routesFinananceiro } from './src/Routes/financeiro.js';
 import { routeDocumentos } from './src/Routes/documentos.js';
+import { routesFormaPagamento } from './src/Routes/formaPagamento.js';
 
 const app=Fastify()
 
 routesUsuario(app);
 routesFinananceiro(app);
 routeDocumentos(app)
+routesFormaPagamento(app)
 
 const PORT = process.env.PORT || 3333
 

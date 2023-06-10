@@ -7,7 +7,7 @@ export async function routeDocumentos(app){
     })
 
     app.post('/document',async (request, reply)=>{
-        const {usuarioId,id_cliente, valor, descricao}= request.body
+        const {usuarioId,id_cliente,Pag_id,saida, valor, descricao}= request.body
 
         const clienteExite = await prisma.cliente.findFirst({
             where: {
