@@ -4,6 +4,7 @@ import { routesUsuario}  from './src/Routes/usuario.js'
 import { routesFinananceiro } from './src/Routes/financeiro.js';
 import { routeDocumentos } from './src/Routes/documentos.js';
 import { routesFormaPagamento } from './src/Routes/formaPagamento.js';
+import { routesProduto } from './src/Routes/Produto.js';
 
 const app=Fastify()
 
@@ -11,6 +12,7 @@ routesUsuario(app);
 routesFinananceiro(app);
 routeDocumentos(app)
 routesFormaPagamento(app)
+routesProduto(app)
 
 const PORT = process.env.PORT || 3333
 
