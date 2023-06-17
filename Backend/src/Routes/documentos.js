@@ -11,7 +11,7 @@ export async function routeDocumentos(app){
 
         const clienteExite = await prisma.cliente.findFirst({
             where: {
-                cliente_id: id_cliente
+                cliente_id: id_cliente  
               }  
         })
 
