@@ -4,7 +4,7 @@ export async function routesProduto(app){
    
 
 
-    app.get('/Produto/',async ()=>{
+    app.get('/informacoes-itens',async ()=>{
         const Produto = await prisma.Produto.findMany({
             orderBy:{
               id_produto: 'asc'
@@ -14,7 +14,7 @@ export async function routesProduto(app){
     })
 
 
-    app.delete('/Produto/:id', async (request, reply) => {
+    app.delete('/Excluir-itens/:id', async (request, reply) => {
         const { id } = request.params;
       
         const deletedProduto = await prisma.produto.delete({
@@ -28,7 +28,7 @@ export async function routesProduto(app){
 
 
 
-    app.put('/Produto/:id', async (request, reply) => {
+    app.put('/alterar-itens/:id', async (request, reply) => {
         const { id } = request.params;
         const { cod_barras, descricao, valor_v, valor_c, estoque, docItens } = request.body;
       
@@ -51,7 +51,7 @@ export async function routesProduto(app){
 
 
 
-    app.post('/Produto',async (request, reply)=>{
+    app.post('/cadastrar-itens',async (request, reply)=>{
         const {id_produto,cod_barras, descricao, valor_v, valor_c, estoque, docItens}= request.body
     
         const novoProduto = await prisma.produto.create({
