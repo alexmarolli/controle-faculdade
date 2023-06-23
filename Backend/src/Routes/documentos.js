@@ -27,6 +27,11 @@ export async function routeDocumentos(app){
               id_cliente,
               valor,
               descricao,
+              Financeiro :{
+                data:{
+                  
+                }
+              }
             },
           });
 

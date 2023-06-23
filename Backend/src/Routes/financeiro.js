@@ -60,11 +60,11 @@ export async function routesFinananceiro(app){
         const financeiroId = request.params.id;
         const {dt_pago,pago} = request.body;
 
-        const updateFin = await prisma.financeiro.update({
-            where:{fin_id:id},
+        const updateFin = await prisma.financeiro.updateMany({
+            where:{id:financeiroId},
             data:{
-                dt_pago,
-                pago
+                dt_pago: dt_pago,
+                pago:pago
             }
         })
     })
