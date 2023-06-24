@@ -1,0 +1,81 @@
+.alterar-item-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+
+.alterar-item-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.produtos-cadastrados {
+  margin-bottom: 20px;
+}
+
+.produto-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.produto-button {
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.produto-button.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.produtos-buscados {
+  margin-top: 20px;
+}
+
+.alterar-item-form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.links-container {
+  margin-top: 20px;
+}
+
+.page-link {
+  margin-right: 10px;
+  color: #007bff;
+  text-decoration: none;
+}

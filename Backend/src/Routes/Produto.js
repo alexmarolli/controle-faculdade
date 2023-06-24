@@ -70,7 +70,6 @@ export async function routesProduto(app) {
           valor_v,
           valor_c,
           estoque,
-          docItens,
         },
       });
 

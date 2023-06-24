@@ -1,0 +1,32 @@
+.homeproduto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: calc(100vh - 40px);
+}
+
+.homeproduto-title {
+  font-size: 64px;
+  color: #333;
+}
+
+.homeproduto-links {
+  margin-top: 20px;
+}
+
+.homeproduto-link {
+  display: inline-block;
+  margin: 10px;
+  padding: 8px 16px;
+  font-size: 30px;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.homeproduto-link:hover {
+  background-color: #0056b3;
+}
