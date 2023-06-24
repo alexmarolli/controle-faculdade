@@ -1,15 +1,19 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CriarItem from './pages/CriarItem'; 
+import Home from './pages/Home';
+import VerItens from './pages/VerItens'; 
 
-
-function App() {
+const App = () => {
   return (
-    <main /*className='bg-fundo  max-h-screen'*/>
-      <header className='bg-gray-600 h:{24}'>
-        <p>teste</p>
-      </header>
-    </main>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/cadastrar-itens" component={CriarItem} />
+        <Route path="/informacoes-itens" component={VerItens} />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;
