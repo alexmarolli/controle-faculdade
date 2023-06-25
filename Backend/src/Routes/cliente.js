@@ -29,6 +29,8 @@ export async function routesCliente(app){
         const { id } = request.params;
         const { cpfCnpj, email, nome, telefone, endereco, numero } = request.body;
       
+        //faz uma vereificação de CPF, pra não poder ter 2 iguais 
+      
         const updatedCliente = await prisma.cliente.update({
           where: {
             cliente_id: Number(id),
