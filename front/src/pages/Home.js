@@ -1,16 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Homes.css';
+import '../components/Home.css';
 
 const Home = () => {
   return (
-    <div className="home-container">
-      <h1 className="home-title">Página Inicial</h1>
-      <div className="home-links">
-        <Link to="/cadastrar-itens" className="home-link">Criar Item</Link>
-        <Link to="/informacoes-itens" className="home-link">Ver Item</Link>
-        <Link to="/excluir" className="home-link">Excluir Item</Link>
-        <Link to="/alterar" className="home-link">Alterar Item</Link>
+    <div>
+      <header className="home-header">
+        <div className="home-logo"></div>
+        <nav className="home-nav">
+          <ul className="home-nav-list">
+            <li className="home-nav-item">
+              <Link to="/Produto" className="home-nav-link">Produtos</Link>
+            </li>
+            <li className="home-nav-item">
+              <Link to="/Financeiro" className="home-nav-link">Financeiro</Link>
+            </li>
+            <li className="home-nav-item">
+              <Link to="/Documento" className="home-nav-link">Documento</Link>
+            </li>
+            <li className="home-nav-item">
+              <Link to="/Parceiros" className="home-nav-link">Parceiros</Link>
+            </li>
+            <li className="home-nav-item">
+              <Link to="/Usuario" className="home-nav-link">Usuário</Link>
+            </li>
+            <li className="home-nav-item">
+              <Link to="/Login" className="home-nav-link">Login</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div className="home-container">
+        <h1 className="home-title">Empresarial</h1>
+        <h2 className="home-subtitle">O melhor sistema desenvolvido pela primeira vez, em menos de um mês</h2>
       </div>
     </div>
   );

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import api from '../api/api';
-import './CriarItem.css';
+import '../components/CriarItem.css';
 
 const CriarItem = () => {
   const [formValues, setFormValues] = useState({
+    id_produto: '', // Adicionado o campo "id_produto"
     cod_barras: '',
     descricao: '',
     valor_v: '',
@@ -11,6 +12,7 @@ const CriarItem = () => {
     estoque: '',
     docItens: '',
   });
+  const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
@@ -20,9 +22,21 @@ const CriarItem = () => {
     e.preventDefault();
 
     try {
+      console.log(formValues);
       await api.post('/cadastrar-itens', formValues);
+      setMessage('Item criado com sucesso!');
+      setFormValues({
+        id_produto: '', // Adicionado o campo "id_produto" na reinicialização do formulário
+        cod_barras: '',
+        descricao: '',
+        valor_v: '',
+        valor_c: '',
+        estoque: '',
+        docItens: '',
+      });
     } catch (error) {
       console.error(error);
+      setMessage('Falha ao criar o item. Por favor, tente novamente.');
     }
   };
 
@@ -30,6 +44,10 @@ const CriarItem = () => {
     <div className="criar-item-container">
       <h1>Criar Item</h1>
       <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="id_produto">ID:</label>
+          <input type="text" id="id_produto" name="id_produto" value={formValues.id_produto} onChange={handleChange} />
+        </div>
         <div className="form-group">
           <label htmlFor="cod_barras">Código de Barras:</label>
           <input type="text" id="cod_barras" name="cod_barras" value={formValues.cod_barras} onChange={handleChange} />
@@ -56,10 +74,9 @@ const CriarItem = () => {
         </div>
         <button type="submit">Salvar</button>
       </form>
+      {message && <p>{message}</p>}
     </div>
-    
   );
-  
 };
 
 export default CriarItem;
