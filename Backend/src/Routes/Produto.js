@@ -72,6 +72,17 @@
           },
         });
 
+        // add para movimentação
+        
+        await prisma.movimentacao.create({
+          data: {
+            status: 'Entrada',
+            desc: `Produto cadastrado: ${novoProduto.descricao} \nValor da entrada: ${novoProduto.valor_v} `,
+          },
+        });
+
+        // Verificar funcionamento e se é valor_v ou valor_c 
+
         reply.send(novoProduto);
       } catch (error) {
         console.error(error);

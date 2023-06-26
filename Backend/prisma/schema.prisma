@@ -95,3 +95,9 @@ model forma_pag {
   //Documento  Documento[]
   Documento  Documento[]
 }
+
+model movimentacao {
+  mov_id Int @id @default(autoincrement())
+  status String 
+  desc String
+}
