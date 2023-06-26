@@ -49,17 +49,21 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: #f2f2f2;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .home-title {
   font-size: 64px;
-  color: #333;
+  color: #444;
   margin-bottom: 20px;
 }
 
 .home-subtitle {
   font-size: 24px;
-  color: #666;
+  color: #777;
   margin-left: 20px;
 }
 
@@ -69,13 +73,15 @@
 }
 
 .home-title-large {
-  font-size: 120px; /* Defina um tamanho maior para o título */
-  margin-top: 120px; /* Remova a margem superior para posicionar o título mais para cima */
+  font-size: 120px;
+  margin-top: 120px; 
 }
 
 .home-link {
   text-decoration: none;
 }
+
+
 
 .home-button {
   padding: 10px 20px;

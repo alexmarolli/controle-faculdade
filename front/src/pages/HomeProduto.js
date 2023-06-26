@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../components/HomeProduto.css';
 
 const HomeProduto = () => {
-  const itemId = 'id_do_item_aqui'; // Substitua 'id_do_item_aqui' pelo ID real do item que você deseja alterar
+  const itemId = 'id_do_item_aqui';
 
   return (
     <div className="homeproduto-container">

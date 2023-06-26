@@ -4,7 +4,7 @@ import '../components/Home.css';
 
 const Home = () => {
   return (
-    <div>
+    <div className="home-background">
       <header className="home-header">
         <div className="home-logo"></div>
         <nav className="home-nav">
