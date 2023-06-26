@@ -25,13 +25,12 @@ model Conta {
 }
 
 model Produto {
-  id_produto Int        @id
+  id_produto String @id
   cod_barras String
   descricao  String
-  valor_v    Decimal
-  valor_c    Decimal
-  estoque    Int
-  docItens   docItens[]
+  valor_v    String
+  valor_c    String
+  estoque    String
 }
 
 model Documento {
@@ -55,7 +54,6 @@ model docItens {
   valor_un   Decimal
   valor_to   Decimal
   quantidade Int
-  produto    Produto  @relation(fields: [Id_produto], references: [id_produto])
 }
 
 model cliente {

@@ -1,8 +1,8 @@
 -- CreateTable
 CREATE TABLE "Produto" (
-    "id_produto" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id_produto" INTEGER NOT NULL PRIMARY KEY,
     "cod_barras" TEXT NOT NULL,
-    "descricao" DECIMAL NOT NULL,
+    "descricao" TEXT NOT NULL,
     "valor_v" DECIMAL NOT NULL,
     "valor_c" DECIMAL NOT NULL,
     "estoque" INTEGER NOT NULL
@@ -20,7 +20,7 @@ CREATE TABLE "Movimentacao" (
 -- RedefineTables
 PRAGMA foreign_keys=OFF;
 CREATE TABLE "new_Produto" (
-    "id_produto" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id_produto" INTEGER NOT NULL PRIMARY KEY,
     "cod_barras" TEXT NOT NULL,
     "descricao" TEXT NOT NULL,
     "valor_v" DECIMAL NOT NULL,

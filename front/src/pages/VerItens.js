@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api/api';
+import '../components/VerItens.css';
 
 const VerItens = () => {
   const [produtos, setProdutos] = useState([]);
@@ -27,13 +28,14 @@ const VerItens = () => {
   };
 
   return (
-    <div>
-      <h1>Ver Itens</h1>
-      <ul>
+    <div className="ver-itens-container">
+      <h1 className="ver-itens-title">Ver Itens</h1>
+      <ul className="ver-itens-list">
         {produtos.map((produto) => (
-          <li key={produto.id_produto}>
-            {produto.descricao} - R$ {produto.valor_v}
-            <button onClick={() => handleExcluir(produto.id_produto)}>Excluir</button>
+          <li key={produto.id_produto} className="ver-itens-item">
+            <span>{produto.descricao}</span>
+            <span className="ver-itens-item-price">R$ {produto.valor_v}</span>
+            <button className="ver-itens-item-button" onClick={() => handleExcluir(produto.id_produto)}>Excluir</button>
           </li>
         ))}
       </ul>

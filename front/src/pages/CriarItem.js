@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import api from '../api/api';
 import '../components/CriarItem.css';
 
+
+
 const CriarItem = () => {
+  
+
   const [formValues, setFormValues] = useState({
-    id_produto: '', // Adicionado o campo "id_produto"
+    id_produto: '',
     cod_barras: '',
     descricao: '',
     valor_v: '',
     valor_c: '',
     estoque: '',
-    docItens: '',
   });
   const [message, setMessage] = useState('');
 
@@ -26,13 +29,12 @@ const CriarItem = () => {
       await api.post('/cadastrar-itens', formValues);
       setMessage('Item criado com sucesso!');
       setFormValues({
-        id_produto: '', // Adicionado o campo "id_produto" na reinicialização do formulário
+        id_produto: '',
         cod_barras: '',
         descricao: '',
         valor_v: '',
         valor_c: '',
         estoque: '',
-        docItens: '',
       });
     } catch (error) {
       console.error(error);
@@ -67,10 +69,6 @@ const CriarItem = () => {
         <div className="form-group">
           <label htmlFor="estoque">Estoque:</label>
           <input type="number" id="estoque" name="estoque" value={formValues.estoque} onChange={handleChange} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="docItens">Documentos do Item:</label>
-          <input type="text" id="docItens" name="docItens" value={formValues.docItens} onChange={handleChange} />
         </div>
         <button type="submit">Salvar</button>
       </form>

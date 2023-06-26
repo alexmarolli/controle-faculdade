@@ -5,8 +5,14 @@ import { routesFinananceiro } from './src/Routes/financeiro.js';
 import { routeDocumentos } from './src/Routes/documentos.js';
 import { routesFormaPagamento } from './src/Routes/formaPagamento.js';
 import { routesProduto } from './src/Routes/Produto.js';
+import fastifyCors from '@fastify/cors';
+
 
 const app=Fastify()
+
+app.register(fastifyCors, {
+    origin: 'http://localhost:3000',
+  });
 
 routesUsuario(app);
 routesFinananceiro(app);
@@ -14,7 +20,7 @@ routeDocumentos(app)
 routesFormaPagamento(app)
 routesProduto(app)
 
-const PORT = process.env.PORT || 3333
+const PORT = 3333;
 
 
 app.listen({port: 3333},function(err,address){

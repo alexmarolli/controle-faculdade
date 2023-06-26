@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import api from '../api/api';
 import '../components/Alteraritem.css';
 
+
 const AlterarItem = () => {
   const [produtos, setProdutos] = useState([]);
   const [selectedProduto, setSelectedProduto] = useState(null);
@@ -14,6 +15,8 @@ const AlterarItem = () => {
     estoque: '',
     docItens: '',
   });
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     fetchProdutos();
@@ -43,13 +46,14 @@ const AlterarItem = () => {
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
 
     try {
-      await api.put(`/alterar-itens/${selectedProduto.id_produto}`, formValues);
-      alert('Item alterado com sucesso!');
+      await api.put(`/alterar-itens/${selectedProduto.id_produto.toString()}`, formValues);
+      setIsSuccess(true);
       setSelectedProduto(null);
       setFormValues({
         cod_barras: '',
@@ -61,6 +65,7 @@ const AlterarItem = () => {
       });
       fetchProdutos();
     } catch (error) {
+      setIsError(true);
       console.error(error);
     }
   };
@@ -68,6 +73,8 @@ const AlterarItem = () => {
   return (
     <div className="alterar-item-container">
       <h1 className="alterar-item-title">Alterar Item</h1>
+      {isSuccess && <p className="success-message">Item alterado com sucesso!</p>}
+      {isError && <p className="error-message">Falha ao alterar o item. Por favor, tente novamente.</p>}
       <div className="produtos-cadastrados">
         <h3>Produtos Cadastrados:</h3>
         <ul className="produto-list">
@@ -92,7 +99,7 @@ const AlterarItem = () => {
                 Código de Barras:
               </label>
               <input
-                type="text"
+                type="string"
                 id="cod_barras"
                 name="cod_barras"
                 value={formValues.cod_barras}
