@@ -36,15 +36,15 @@ model Produto {
 
 model Documento {
   doc_controle Int          @id @default(autoincrement())
+  descricao    String
   usuarioId    Int
   id_cliente   Int
-  // Pag_id       Int
-  //  saida        Boolean      @default(true)
-  //  data         DateTime     @default(now())
+  saida        Boolean      @default(true)
+  data         DateTime     @default(now())
   valor        Decimal
-  descricao    String
+  Pag_id       Int
   user         Usuario      @relation(fields: [usuarioId], references: [id])
-  //forma_pag    forma_pag    @relation(fields: [Pag_id], references: [pag_id])
+  pag_id       forma_pag    @relation(fields: [Pag_id], references: [pag_id])
   Financeiro   Financeiro[]
 }
 
@@ -95,4 +95,5 @@ model forma_pag {
   descricao  String
   Financeiro Financeiro[]
   //Documento  Documento[]
+  Documento  Documento[]
 }

@@ -2,8 +2,22 @@ import {  prisma } from '../lib/prisma.js';
 
 
 export async function routeDocumentos(app){
-    app.get('/documents', async()=>{
-        const documents = await prisma.documento.findMany()
+    app.get('/documents', async(request,reply)=>{
+      const {cliente_id,Pag_id} = request.query;
+      let where={};
+
+      if(cliente_id){
+        where.cliente_id= Number(cliente_id)
+      }
+
+      if(Pag_id){
+        where.Pag_id=Number(doc_controle)
+      }
+      console.log (where)
+        const documents = await prisma.documento.findMany(
+          where,
+        )
+        return documents
     })
 
     app.post('/document',async (request, reply)=>{
@@ -27,11 +41,8 @@ export async function routeDocumentos(app){
               id_cliente,
               valor,
               descricao,
-              Financeiro :{
-                data:{
-                  
-                }
-              }
+              Pag_id,
+              saida
             },
           });
 

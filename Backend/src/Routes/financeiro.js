@@ -112,6 +112,6 @@ app.get('/financeiro', async (request, reply) => {
   });
   
   return financeiro;
-});
+}); 
 
 }     
