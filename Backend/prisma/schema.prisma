@@ -45,15 +45,18 @@ model Documento {
   user         Usuario      @relation(fields: [usuarioId], references: [id])
   pag_id       forma_pag    @relation(fields: [Pag_id], references: [pag_id])
   Financeiro   Financeiro[]
+  docItens     docItens[]
 }
 
 model docItens {
-  item       Int      @id @default(autoincrement())
-  Id_produto Int
-  data       DateTime
-  valor_un   Decimal
-  valor_to   Decimal
-  quantidade Int
+  item         Int       @id @default(autoincrement())
+  Doc_controle Int
+  Id_produto   Int
+  data         DateTime
+  valor_un     Decimal
+  valor_to     Decimal
+  quantidade   Int
+  doc_controle Documento @relation(fields: [Doc_controle], references: [doc_controle])
 }
 
 model cliente {
@@ -97,7 +100,7 @@ model forma_pag {
 }
 
 model movimentacao {
-  mov_id Int @id @default(autoincrement())
-  status String 
-  desc String
+  mov_id Int    @id @default(autoincrement())
+  status String
+  desc   String
 }
