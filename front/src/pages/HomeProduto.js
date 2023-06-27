@@ -11,7 +11,7 @@ const HomeProduto = () => {
       <div className="homeproduto-links">
         <Link to="/cadastrar-itens" className="homeproduto-link">Criar Item</Link>
         <Link to="/informacoes-itens" className="homeproduto-link">Ver Item</Link>
-        <Link to="/excluir" className="homeproduto-link">Excluir Item</Link>
+        <Link to="/informacoes-itens" className="homeproduto-link">Excluir Item</Link>
         <Link to={`/alterar-itens/${itemId}`} className="homeproduto-link">Alterar Item</Link>
       </div>
     </div>
