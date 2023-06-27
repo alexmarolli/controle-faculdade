@@ -25,7 +25,10 @@ const Home = () => {
               <Link to="/Usuario" className="home-nav-link">Usuário</Link>
             </li>
             <li className="home-nav-item">
-              <Link to="/Login" className="home-nav-link">Login</Link>
+              <Link to="/Register" className="home-nav-link">Registrar</Link>
+            </li>
+            <li className="home-nav-item">
+              <Link to="/Login" className="home-nav-link">Logar</Link>
             </li>
           </ul>
         </nav>

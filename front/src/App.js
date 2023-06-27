@@ -6,6 +6,8 @@ import VerItens from './pages/VerItens';
 import AlterarItem from './pages/AlterarItem';
 import HomeProduto from './pages/HomeProduto.js';
 import ExcluirItens from './pages/ExcluirItens';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
         <Route path="/informacoes-itens" component={VerItens} />
         <Route path="/alterar-itens/:id" component={AlterarItem} />
         <Route path="/Excluir-itens/" component={ExcluirItens} />
+        <Route path="/Register" component={Register} />
+        <Route path="/Login" component={Login} />
       </Switch>
     </Router>
   );
