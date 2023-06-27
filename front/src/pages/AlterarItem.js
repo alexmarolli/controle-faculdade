@@ -99,7 +99,7 @@ const AlterarItem = () => {
                 Código de Barras:
               </label>
               <input
-                type="string"
+                type="text"
                 id="cod_barras"
                 name="cod_barras"
                 value={formValues.cod_barras}

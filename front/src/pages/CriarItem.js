@@ -16,11 +16,13 @@ const CriarItem = () => {
     estoque: '',
   });
   const [message, setMessage] = useState('');
-
+  
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
-  };
+    const { name, value } = e.target;
+    const updatedValue = name === 'descricao' ? value : /^\d+$/.test(value) ? parseInt(value, 10) : '';
 
+    setFormValues({ ...formValues, [name]: updatedValue });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 

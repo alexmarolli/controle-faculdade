@@ -39,12 +39,12 @@
 
         const updatedProduto = await prisma.produto.update({
           where: {
-            id_produto: string(id),
+            id_produto: parseInt(id),
           },
           data: {
-            cod_barras,
+            cod_barras: parseInt(cod_barras),
             descricao,
-            valor_v,
+            valor_v: parseFloat(valor_v),
             valor_c,
             estoque,
           },
@@ -82,7 +82,7 @@
         });
 
         // Verificar funcionamento e se é valor_v ou valor_c 
-
+        console.log(novoProduto);
         reply.send(novoProduto);
       } catch (error) {
         console.error(error);

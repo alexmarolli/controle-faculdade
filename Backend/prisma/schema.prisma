@@ -25,13 +25,14 @@ model Conta {
 }
 
 model Produto {
-  id_produto String @id
-  cod_barras String
+  id_produto Int    @id
+  cod_barras Int
   descricao  String
-  valor_v    String
-  valor_c    String
-  estoque    String
+  valor_v    Float
+  valor_c    Float
+  estoque    Int
 }
+
 
 model Documento {
   doc_controle Int          @id @default(autoincrement())
