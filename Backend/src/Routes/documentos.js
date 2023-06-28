@@ -45,6 +45,7 @@ export async function routeDocumentos(app){
               saida,
             },
           });
+          const {cliente_id,forma_pag,debCred,dt_vencimento,pago,dt_pago} = request.body;
 
           const vencimento = await prisma.forma_pag.findFirst({
             where:{
@@ -58,7 +59,7 @@ export async function routeDocumentos(app){
                 data: {
                     id_cliente,
                     Doc_controle: novoDocumento.Doc_controle,
-                    usuarioId: usuarioId,
+                    usuarioId,
                     forma_pagPag_id: forma_pag,
                     debCred: debCred,
                     dt_vencimento: new Date(),

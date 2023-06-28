@@ -5,8 +5,8 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundColor:{
-        //'fundo': "URL('./public/teste.png')"
+      colors:{
+        fundo: '#212121'
       }
     },
   },
