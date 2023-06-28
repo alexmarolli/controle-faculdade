@@ -33,8 +33,10 @@ const VerItens = () => {
       <ul className="ver-itens-list">
         {produtos.map((produto) => (
           <li key={produto.id_produto} className="ver-itens-item">
-            <span>{produto.descricao}</span>
-            <span className="ver-itens-item-price">R$ {produto.valor_v}</span>
+            <span>ID: {produto.id_produto}</span>
+            <span>Descrição: {produto.descricao}</span>
+            <span>Valor: R$ {produto.valor_v}</span>
+            <span>Estoque: {produto.estoque}</span>
             <button className="ver-itens-item-button" onClick={() => handleExcluir(produto.id_produto)}>Excluir</button>
           </li>
         ))}
