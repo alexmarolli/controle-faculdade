@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../api/api';
+import '../components/CriarParceiro.css';
 
 function CriarParceiro() {
   const [parceiro, setParceiro] = useState({
@@ -53,7 +54,7 @@ function CriarParceiro() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Criar Parceiro</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -94,8 +95,7 @@ function CriarParceiro() {
         </label>
         <label>
           Telefone:
-          <input
-            type="text"
+          <text
             name="telefone"
             value={parceiro.telefone}
             onChange={handleChange}
@@ -123,7 +123,7 @@ function CriarParceiro() {
       </form>
       {mensagem && <p>{mensagem}</p>}
       {erro && <p>{erro}</p>}
-      <Link to="/">Voltar</Link>
+      <Link to="/" className="link">Voltar</Link>
     </div>
   );
 }
