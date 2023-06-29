@@ -1,5 +1,6 @@
 //import { PrismaClient } from "@prisma/client"
 import {prisma} from '../lib/prisma.js'
+import jwt from 'jsonwebtoken'
 
 //const prisma=new PrismaClient();
 
@@ -59,7 +60,6 @@ app.get('/login', async (request, reply) => {
         },
       },
     });
-
     if (!usuario) {
       reply.status(401).send('Usuário não encontrado');
       return;
@@ -70,13 +70,42 @@ app.get('/login', async (request, reply) => {
       reply.status(403).send('Senha incorreta');
       return;
     }
-
+    const id = usuario.id;
+    const token = jwt.sign({id}, "jwtSecretKey", {expiresIn: 300});
     // Usuário autenticado com sucesso
-    reply.send('Autenticação bem-sucedida');
+    reply.send(token, 'Autenticação bem-sucedida');
   } catch (error) {
     console.error(error);
     reply.status(500).send('Erro durante a autenticação');
   }
+});
+
+const verifyJwt = (req, res, next) => {
+  const token = req.headers["access-token"];
+  console.log(token)
+  if(!token) {
+    console.log("notoken")
+    return res.send("Sem Token")
+  } else {
+    console.log("sitoken")
+    jwt.verify(token, "jwtSecretKey", (err, decoded) => {
+      if(err) {
+        console.log("badtoken")
+        res.send("Sem Auth");
+      } else {
+        const id = usuario.id
+        console.log(id, "id")
+        req.id = decoded.id;
+
+        next();
+      }
+    })
+  }
+}
+
+
+app.get('/checkauth', { preHandler: verifyJwt }, (req, res) => {
+  return res.json("Authenticated");
 });
 
 }

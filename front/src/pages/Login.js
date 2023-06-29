@@ -14,10 +14,12 @@ const Login = () => {
     try {
         const response = await api.get(`/login?nome=${nome}&senha=${senha}`);
 
+      if (response.data) {
       console.log(response.data);
-
       // Definir a mensagem de sucesso
       setMessage('Usuário logado com sucesso!');
+      localStorage.setItem("token", response.data)
+      }
 
       // Limpar os campos do formulário
       setNome('');
@@ -35,6 +37,15 @@ const Login = () => {
       }
 
     }
+    }
+    const handleAuth = () => {
+      api.get('/checkauth', {
+        headers: {
+          'access-token': localStorage.getItem("token")
+        }
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   return (
@@ -58,6 +69,10 @@ const Login = () => {
         <Link to="/Register" className="home-nav-link">Registrar-se</Link>
       </form>
       {message && <p>{message}</p>}
+      <br></br>
+      <div>
+        <button onClick={handleAuth} className="home-nav-link">Acessar Sistema</button>
+      </div>
     </div>
   );
 };
