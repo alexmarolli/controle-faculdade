@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors:{
         fundo: '#212121'
-      }
+      }   
     },
   },
   plugins: [],
