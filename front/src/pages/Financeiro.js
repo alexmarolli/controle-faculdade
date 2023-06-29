@@ -15,27 +15,27 @@ const HomeFinanceiro = () => {
   };
 
   return (
-    <main className=" bg-gray-900 w-full min-h-screen align-middle ">
-      <header className="bg-gray-300 flex h-[72px] align-middle items-center justify-between">
-        <div className="ml-4 h-8 w-8  ">
-          <img className="h-8 w-8" src="../components/logo" alt="Logo "></img>
-        </div>
+    <main className=" bg-fundo w-full min-h-screen align-middle ">
+      <header className="bg-gray-300 flex h-[72px] align-middle items-center justify-around">
         <nav className="w-[90%]">
-          <ul className="flex flex-row justify-between mr-8">
+          <ul className="flex flex-row justify-between">
             <li className="no-underline m-2 text-lg">
               <button onClick={openModal}>criar</button>
             </li>
             <li className="no-underline m-2 text-lg">
-              <Link to="/">Baixa</Link>
+              <Link to="/">Baixar Financeiro</Link>
             </li>
             <li className="no-underline m-2 text-lg">
-              <Link to="/">listar</Link>
+              <Link to="/">Listar</Link>
             </li>
             <li className="no-underline m-2 text-lg">
-              <Link to="/">excluir</Link>
+              <Link to="/">Excluir</Link>
             </li>
             <li className="no-underline m-2 text-lg">
-              <Link to="/">alterar</Link>
+              <Link to="/">Alterar</Link>
+            </li>
+            <li className="no-underline m-2 text-lg">
+              <Link to="/">Voltar</Link>
             </li>
           </ul>
         </nav>
