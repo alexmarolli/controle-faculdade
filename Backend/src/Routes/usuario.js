@@ -82,21 +82,14 @@ app.get('/login', async (request, reply) => {
 
 const verifyJwt = (req, res, next) => {
   const token = req.headers["access-token"];
-  console.log(token)
   if(!token) {
-    console.log("notoken")
     return res.send("Sem Token")
   } else {
-    console.log("sitoken")
     jwt.verify(token, "jwtSecretKey", (err, decoded) => {
       if(err) {
-        console.log("badtoken")
         res.send("Sem Auth");
       } else {
-        const id = usuario.id
-        console.log(id, "id")
         req.id = decoded.id;
-
         next();
       }
     })
@@ -105,7 +98,7 @@ const verifyJwt = (req, res, next) => {
 
 
 app.get('/checkauth', { preHandler: verifyJwt }, (req, res) => {
-  return res.json("Authenticated");
+  return res.send("Authenticated");
 });
 
 }
