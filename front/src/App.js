@@ -6,6 +6,7 @@ import VerItens from './pages/VerItens';
 import AlterarItem from './pages/AlterarItem';
 import HomeProduto from './pages/HomeProduto.js';
 import ExcluirItens from './pages/ExcluirItens';
+import CriarParceiro from './pages/CriarParceiro';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import homeFinanceiro from './pages/Financeiro';
@@ -17,6 +18,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/Produto" component={HomeProduto} />
         <Route exact path="/Financeiro" component={homeFinanceiro}/>
+        <Route exact path="/criar-parceiro" component={CriarParceiro}/>
         <Route path="/cadastrar-itens" component={CriarItem} />
         <Route path="/informacoes-itens" component={VerItens} />
         <Route path="/alterar-itens/:id" component={AlterarItem} />
