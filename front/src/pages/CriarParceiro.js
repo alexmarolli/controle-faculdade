@@ -78,7 +78,7 @@ function CriarParceiro() {
         <label>
           Email:
           <input
-            type="email"
+            type="text"
             name="email"
             value={parceiro.email}
             onChange={handleChange}
@@ -95,7 +95,8 @@ function CriarParceiro() {
         </label>
         <label>
           Telefone:
-          <text
+          <input
+            type="text"
             name="telefone"
             value={parceiro.telefone}
             onChange={handleChange}
