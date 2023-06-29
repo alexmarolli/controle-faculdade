@@ -1,39 +1,39 @@
 import {  prisma } from '../lib/prisma.js';
 
-export async function routesCliente(app){
-    app.get('/cliente/',async ()=>{
-        const cliente = await prisma.cliente.findMany({
+export async function routesParceiro(app){
+    app.get('/ver-parceiro',async ()=>{
+        const parceiro = await prisma.parceiro.findMany({
             orderBy:{
-                cliente_id: 'asc'
+                parceiro_id: 'asc'
             }
         })
-        return cliente;
+        return parceiro;
         
     })
 
-    app.delete('/cliente/:id', async (request, reply) => {
+    app.delete('/exluir-parceiro/:id', async (request, reply) => {
         const { id } = request.params;
       
-        const deletedCliente = await prisma.cliente.delete({
+        const deletedParceiro = await prisma.parceiro.delete({
           where: {
-            cliente_id: parseInt(id),
+            parceiro_id: parseInt(id),
           },
         });
       
-        return deletedCliente;
+        return deletedParceiro;
       });
 
 
 
-    app.put('/cliente/:id', async (request, reply) => {
+    app.put('/alterar-parceiro/:id', async (request, reply) => {
         const { id } = request.params;
         const { cpfCnpj, email, nome, telefone, endereco, numero } = request.body;
       
         //faz uma vereificação de CPF, pra não poder ter 2 iguais 
       
-        const updatedCliente = await prisma.cliente.update({
+        const updatedParceiro = await prisma.parceiro.update({
           where: {
-            cliente_id: Number(id),
+            parceiro_id: Number(id),
           },
           data: {
             cpfCnpj,
@@ -45,17 +45,17 @@ export async function routesCliente(app){
           },
         });
       
-        return updatedCliente;
+        return updatedParceiro;
       });
 
 
 
-    app.post('/cliente',async (request, reply)=>{
-        const {cliente_id, cpfCnpj, email, nome, telefone, endereco, numero}= request.body
+    app.post('/criar-parceiro',async (request, reply)=>{
+        const {parceiro_id, cpfCnpj, email, nome, telefone, endereco, numero}= request.body
     
-        const novoCliente = await prisma.cliente.create({
+        const novoParceiro = await prisma.parceiro.create({
             data: {
-                cliente_id,
+                parceiro_id,
                 cpfCnpj, 
                 email, 
                 nome, 
@@ -66,7 +66,7 @@ export async function routesCliente(app){
             
           });
     
-          return novoCliente;     
+          return novoParceiro;     
           
           
           

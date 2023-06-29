@@ -19,7 +19,7 @@ const Home = () => {
               <Link to="/Documento" className="home-nav-link">Documento</Link>
             </li>
             <li className="home-nav-item">
-              <Link to="/Parceiros" className="home-nav-link">Parceiros</Link>
+              <Link to="/Parceiro" className="home-nav-link">Parceiro</Link>
             </li>
             <li className="home-nav-item">
               <Link to="/Usuario" className="home-nav-link">Usuário</Link>
