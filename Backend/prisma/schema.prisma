@@ -60,8 +60,8 @@ model docItens {
   doc_controle Documento @relation(fields: [Doc_controle], references: [doc_controle])
 }
 
-model cliente {
-  cliente_id Int    @id @default(autoincrement())
+model parceiro {
+  parceiro_id Int    @id @default(autoincrement())
   cpfCnpj    String @unique
   email      String
   nome       String
@@ -74,7 +74,7 @@ model cliente {
 
 model Financeiro {
   fin_id          Int        @id @default(autoincrement())
-  Cliente_id      Int
+  parceiro_id     Int
   Doc_controle    Int?
   usuarioId       Int
   forma_pagPag_id Int
@@ -87,7 +87,7 @@ model Financeiro {
   dt_pago         DateTime?
   documento       Documento? @relation(fields: [Doc_controle], references: [doc_controle])
   user            Usuario    @relation(fields: [usuarioId], references: [id])
-  cliente         cliente    @relation(fields: [Cliente_id], references: [cliente_id])
+  parceiro        parceiro    @relation(fields: [parceiro_id], references: [parceiro_id])
   forma_pag       forma_pag  @relation(fields: [forma_pagPag_id], references: [pag_id])
 }
 

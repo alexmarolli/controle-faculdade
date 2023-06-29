@@ -4,6 +4,7 @@ import { routesUsuario}  from './src/Routes/usuario.js'
 import { routesFinananceiro } from './src/Routes/financeiro.js';
 import { routeDocumentos } from './src/Routes/documentos.js';
 import { routesFormaPagamento } from './src/Routes/formaPagamento.js';
+import { routesParceiros} from './src/Routes/parceiros.js';
 import { routesProduto } from './src/Routes/Produto.js';
 import fastifyCors from '@fastify/cors';
 
@@ -19,6 +20,7 @@ routesFinananceiro(app);
 routeDocumentos(app)
 routesFormaPagamento(app)
 routesProduto(app)
+routesParceiros(app)
 
 const PORT = 3333;
 
