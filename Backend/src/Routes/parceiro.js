@@ -1,6 +1,6 @@
 import {  prisma } from '../lib/prisma.js';
 
-export async function routesParceiros(app){
+export async function routesParceiro(app){
     app.get('/ver-parceiro',async ()=>{
         const parceiro = await prisma.parceiro.findMany({
             orderBy:{
