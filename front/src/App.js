@@ -8,6 +8,7 @@ import AlterarItem from './pages/AlterarItem';
 import HomeProduto from './pages/HomeProduto.js';
 import HomeParceiro from './pages/HomeParceiro';
 import ExcluirItens from './pages/ExcluirItens';
+import ExcluirParceiro from './pages/ExcluirParceiro';
 import CriarParceiro from './pages/CriarParceiro';
 import Register from './pages/Register';
 import Login from './pages/Login';
@@ -22,6 +23,7 @@ const App = () => {
         <Route exact path="/Parceiro" component={HomeParceiro} />
         <Route exact path="/Financeiro" component={homeFinanceiro}/>
         <Route exact path="/criar-parceiro" component={CriarParceiro}/>
+        <Route exact path="/excluir-parceiro" component={ExcluirParceiro}/>
         <Route path="/cadastrar-itens" component={CriarItem} />
         <Route path="/informacoes-itens" component={VerItens} />
         <Route path="/ver-parceiro" component={VerParceiro} />
