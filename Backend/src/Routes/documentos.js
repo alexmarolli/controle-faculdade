@@ -1,27 +1,32 @@
 import {  prisma } from '../lib/prisma.js';
+import { avista } from './financeiro.js';
 
 
 export async function routeDocumentos(app){
     app.get('/documents', async(request,reply)=>{
+
       const {id_cliente,pag_id} = request.query;
       let where={};
-
+      //se existe filtro cliente passar
       if(id_cliente){
         where.id_cliente= Number(id_cliente)
       }
-
+      // filtro de forma de pagamento se tiver filtro 
       if(pag_id){
         where.Pag_id=Number(pag_id)
       }
       console.log (where)
         const documents = await prisma.documento.findMany({
           where,
+          orderBy:{
+            data:asc,
+          }
         })
         return documents
     })
 
     app.post('/document',async (request, reply)=>{// criação do documento 
-        const {usuarioId,id_cliente,Pag_id,saida, valor, descricao, cancelado,}= request.body
+        const {usuarioId,id_cliente,Pag_id,saida, valor, descricao, cancelado}= request.body
 
         const clienteExite = await prisma.cliente.findFirst({
             where: {
@@ -35,6 +40,8 @@ export async function routeDocumentos(app){
               });
         }
 
+        if(avista==1){
+
         const novoDocumento = await prisma.documento.create({
             data: {
               usuarioId,
@@ -43,18 +50,17 @@ export async function routeDocumentos(app){
               descricao,
               Pag_id,
               saida,
+              Financeiro:{
+                data:{
+                  Pag_id,
+
+                }
+              }
             },
           });
+        }else{
           const {cliente_id,forma_pag,debCred,dt_vencimento,pago,dt_pago} = request.body;
 
-          const vencimento = await prisma.forma_pag.findFirst({
-            where:{
-                pag_id:forma_pag,
-                prazo:true
-            }
-        })
-
-        if(!vencimento){
             const financeiro = await prisma.financeiro.create({
                 data: {
                     id_cliente,

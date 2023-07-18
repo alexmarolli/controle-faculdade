@@ -1,5 +1,18 @@
 import {  prisma } from '../lib/prisma.js';
 
+export async function avista(forma_pag){
+    const avista= await prisma.forma_pag.findFirst({
+        select:{
+            prazo:true,
+            where:{
+                pag_id:forma_pag
+            }
+        }
+    })
+
+    return avista
+};
+
 export async function routesFinananceiro(app){
     app.get('/finan/',async ()=>{
         const finan = await prisma.financeiro.findMany({
