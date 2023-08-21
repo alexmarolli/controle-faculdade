@@ -24,4 +24,42 @@ export async function routesDocuments(app){
         return documentos;
 
     })
+
+
+    app.post('/create_document',async (request, reply) =>{
+        
+        const {descricao, usuarioId, id_cliente,saida,valor, pag_id}= request.body;
+
+        let cliente = await prisma.parceiro.findFirst({
+        //    select:{
+                id_cliente:true,
+                where:{
+                    id_cliente:id_cliente
+                }
+        //    }
+        })
+        if(!cliente){
+            reply.send('Não foi possivel criar o documento !')
+        }
+
+        let documento = await prisma.parceiro.create({
+            data:{
+                descricao,
+                usuarioId,
+                id_cliente,
+                saida,
+                data: new Date(),
+                valor,
+                pag_id,
+               /* Financeiro:{
+                    create:{
+                        forma_pagPag_id:pag_id,
+                        Doc_controle,
+                        
+                    }
+                }*/
+            }
+        })
+        reply.send(documento);
+    })
 }
