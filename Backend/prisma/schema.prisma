@@ -33,7 +33,6 @@ model Produto {
   estoque    Int
 }
 
-
 model Documento {
   doc_controle Int          @id @default(autoincrement())
   descricao    String
@@ -47,6 +46,7 @@ model Documento {
   pag_id       forma_pag    @relation(fields: [Pag_id], references: [pag_id])
   Financeiro   Financeiro[]
   docItens     docItens[]
+  id_Cliente   parceiro     @relation(fields: [id_cliente], references: [parceiro_id])
 }
 
 model docItens {
@@ -62,33 +62,34 @@ model docItens {
 
 model parceiro {
   parceiro_id Int    @id @default(autoincrement())
-  cpfCnpj    String @unique
-  email      String
-  nome       String
-  telefone   String
-  endereco   String
-  numero     Int
+  cpfCnpj     String @unique
+  email       String
+  nome        String
+  telefone    String
+  endereco    String
+  numero      Int
 
   Financeiro Financeiro[]
+  Documento  Documento[]
 }
 
 model Financeiro {
-  fin_id          Int        @id @default(autoincrement())
-  parceiro_id     Int
-  Doc_controle    Int?
-  usuarioId       Int
-  forma_pagPag_id Int
-  debCred         Boolean
-  dt_create       DateTime   @default(now())
-  dt_vencimento   DateTime
-  cancelado       Boolean    @default(false)
-  valor           Decimal
-  pago            Boolean
-  dt_pago         DateTime?
-  documento       Documento? @relation(fields: [Doc_controle], references: [doc_controle])
-  user            Usuario    @relation(fields: [usuarioId], references: [id])
-  parceiro        parceiro    @relation(fields: [parceiro_id], references: [parceiro_id])
-  forma_pag       forma_pag  @relation(fields: [forma_pagPag_id], references: [pag_id])
+  fin_id        Int        @id @default(autoincrement())
+  parceiro_id   Int
+  Doc_controle  Int?
+  usuarioId     Int
+  Pag_id        Int
+  credito       Boolean
+  dt_create     DateTime   @default(now())
+  dt_vencimento DateTime
+  cancelado     Boolean    @default(false)
+  valor         Decimal
+  pago          Boolean
+  dt_pago       DateTime?
+  documento     Documento? @relation(fields: [Doc_controle], references: [doc_controle])
+  user          Usuario    @relation(fields: [usuarioId], references: [id])
+  parceiro      parceiro   @relation(fields: [parceiro_id], references: [parceiro_id])
+  forma_pag     forma_pag  @relation(fields: [Pag_id], references: [pag_id])
 }
 
 model forma_pag {

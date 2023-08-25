@@ -28,38 +28,51 @@ export async function routesDocuments(app){
 
     app.post('/create_document',async (request, reply) =>{
         
-        const {descricao, usuarioId, id_cliente,saida,valor, pag_id}= request.body;
+        const {usuarioId} = request.query;
 
-        let cliente = await prisma.parceiro.findFirst({
-        //    select:{
-                id_cliente:true,
-                where:{
-                    id_cliente:id_cliente
-                }
-        //    }
-        })
-        if(!cliente){
-            reply.send('Não foi possivel criar o documento !')
+        const {descricao,parceiro_id,saida,valor,Pag_id} = request.body;
+
+        const cliente_existe = await prisma.parceiro.findMany({
+            where:{
+                parceiro_id,
+            }
+        });
+   
+
+        if(cliente_existe.length===0){
+            return ("Cliente não encontrado");
         }
 
-        let documento = await prisma.parceiro.create({
+        console.log(cliente_existe);
+
+        const create_document = await prisma.documento.create({
             data:{
                 descricao,
-                usuarioId,
-                id_cliente,
+                usuarioId:parseInt(usuarioId),
+                id_cliente:parceiro_id,
                 saida,
                 data: new Date(),
                 valor,
-                pag_id,
-               /* Financeiro:{
+                Pag_id,
+                Financeiro:{
                     create:{
-                        forma_pagPag_id:pag_id,
-                        Doc_controle,
-                        
+                        Doc_controle:create_document.Doc_controle,
+                        id_cliente:parceiro_id,
+                        usuarioId:parseInt(usuarioId),
+                        Pag_id,
+                        debCred,
+                        dt_create: new Date(),
+                        valor,
+                        cancelado,
+                        pago,
+                        dt_pago,
+                        dt_vencimento
                     }
-                }*/
+                }
             }
         })
-        reply.send(documento);
+        
+        return (create_document);
+
     })
 }
