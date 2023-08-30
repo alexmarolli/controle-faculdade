@@ -54,7 +54,7 @@ export async function routesDocuments(app){
                 data: new Date(),
                 valor,
                 Pag_id,
-                Financeiro:{
+                /*Financeiro:{
                     create:{
                         Doc_controle:create_document.Doc_controle,
                         id_cliente:parceiro_id,
@@ -68,7 +68,7 @@ export async function routesDocuments(app){
                         dt_pago,
                         dt_vencimento
                     }
-                }
+                }*/
             }
         })
         
