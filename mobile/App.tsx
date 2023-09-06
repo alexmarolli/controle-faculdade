@@ -55,6 +55,7 @@ function Section({children, title}: SectionProps): JSX.Element {
         {children}
       </Text>
     <TextInput placeholder='digite aki:::>' keyboardType='numeric'/>
+    <Button title='Enviar'/>
     </View>
   );
 }
