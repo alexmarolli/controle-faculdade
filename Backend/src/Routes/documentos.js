@@ -27,7 +27,8 @@ export async function routesDocuments(app){
 
 
     app.post('/create_document',async (request, reply) =>{
-        
+        const {codInterno,codBarras,quantidade,precoV,} = request.body;
+
         const {usuarioId} = request.query;
 
         const {descricao,parceiro_id,saida,valor,Pag_id} = request.body;
@@ -71,6 +72,7 @@ export async function routesDocuments(app){
                 }*/
             }
         })
+
         
         return (create_document);
 

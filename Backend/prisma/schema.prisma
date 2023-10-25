@@ -25,12 +25,19 @@ model Conta {
 }
 
 model Produto {
-  id_produto Int    @id
+  id_produto Int       @id
   cod_barras Int
   descricao  String
   valor_v    Float
   valor_c    Float
-  estoque    Int
+  Estoque    Estoque[]
+}
+
+model Estoque {
+  produtoId_produto Int   @id
+  estoque           Float
+
+  id_produto Produto @relation(fields: [produtoId_produto], references: [id_produto])
 }
 
 model Documento {
@@ -44,19 +51,22 @@ model Documento {
   Pag_id       Int
   user         Usuario      @relation(fields: [usuarioId], references: [id])
   pag_id       forma_pag    @relation(fields: [Pag_id], references: [pag_id])
+  id_Cliente   parceiro     @relation(fields: [id_cliente], references: [parceiro_id])
   Financeiro   Financeiro[]
   docItens     docItens[]
-  id_Cliente   parceiro     @relation(fields: [id_cliente], references: [parceiro_id])
+
+  @@index([doc_controle])
 }
 
 model docItens {
-  item         Int       @id @default(autoincrement())
+  item         Int      @id @default(autoincrement())
   Doc_controle Int
   Id_produto   Int
   data         DateTime
   valor_un     Decimal
   valor_to     Decimal
   quantidade   Int
+
   doc_controle Documento @relation(fields: [Doc_controle], references: [doc_controle])
 }
 
@@ -65,6 +75,7 @@ model parceiro {
   cpfCnpj     String @unique
   email       String
   nome        String
+  fonecedor   Boolean @default(false)
   telefone    String
   endereco    String
   numero      Int
@@ -81,11 +92,13 @@ model Financeiro {
   Pag_id        Int
   credito       Boolean
   dt_create     DateTime   @default(now())
-  dt_vencimento DateTime
+  dt_vencimento DateTime?
   cancelado     Boolean    @default(false)
   valor         Decimal
   pago          Boolean
   dt_pago       DateTime?
+
+  
   documento     Documento? @relation(fields: [Doc_controle], references: [doc_controle])
   user          Usuario    @relation(fields: [usuarioId], references: [id])
   parceiro      parceiro   @relation(fields: [parceiro_id], references: [parceiro_id])
@@ -97,12 +110,6 @@ model forma_pag {
   prazo      Boolean      @default(false)
   descricao  String
   Financeiro Financeiro[]
-  //Documento  Documento[]
   Documento  Documento[]
 }
 
-model movimentacao {
-  mov_id Int    @id @default(autoincrement())
-  status String
-  desc   String
-}

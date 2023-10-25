@@ -45,14 +45,18 @@ const HomeFinanceiro = () => {
           onRequestClose={closeModal}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
-          className={"w-[50%] h-[50%] mx-auto my-auto bg-fundo mt-20 rounded-xl"}>
+          className={"w-[50%] h-[50%] mx-auto my-auto bg-fundo mt-20 rounded-xl p-5"}>
           <div>
-            <h2 className="ml-4 text-gray-200">teste</h2>
-            <form>
-              <input type="date" name="data" src="teste " className="bg-gray-600 w-min rounded-md m-3" />
-              <input type="search" name="data" className="rounded-md m-3 w-[50%]"/>
+            <h2 className="ml-4 text-gray-200">teste</h2> 
+            <form className="">
+              <label className="text-zinc-50 font-serif h-4 flex"> Data de entrada: 
+                <input type="date" name="data" src="teste " className="bg-gray-600 rounded-md m-3 w-28 h-4 left-auto" />
+              </label>
+              <label className="text-zinc-50">Descriçao: 
+                <input type="search" name="data" className="rounded-md m-3 w-[50%]"/>
+              </label>
             </form>
-            <button onClick={closeModal} className="bg-gray-300 w-32 h-8 mx-auto">Criar</button>
+            <button onClick={closeModal} className="bg-gray-300 w-20 h-8 ml-80">Criar</button>
           </div>
         </Modal>
 

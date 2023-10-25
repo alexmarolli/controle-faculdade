@@ -1,4 +1,4 @@
-export default{
-    CLEAR:'notaClear',
-    ADD:'notaAdd'
+export default {
+    CLEAR: 'notaClear',
+    ADD: 'notaAdd'
 }

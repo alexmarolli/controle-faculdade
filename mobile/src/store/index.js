@@ -1,17 +1,28 @@
-import {createStore} from "redux";
-import { persistStore, persistReducer } from "redux-persist";
-import asyncStore from "@react-native-async-storage/async-storage";
+import {createStore} from 'redux';
+import { persistStore, persistReducer} from 'redux-persist';
 
-import Reducers from "../reducers";
-import persistReducer from "redux-persist/es/persistReducer";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import Reducers from '../reducers';
 
 const persistConfig = {
-    key:'aulamobile',
-    store:asyncStore,
-    timeout:0,
+    key: 'aulamobile',
+    storage: AsyncStorage,
+    timeout: 0,
 };
 
-const persistReducer = persistReducer(persistConfig, Reducers);
+const persistedReducer = persistReducer(persistConfig, Reducers);
 
-export const Store = createStore(persistReducer);
-export const persistor = persistStore(Store); 
+export const Store = createStore(persistedReducer);
+
+// export const store = () => configureStore({
+//     reducer: persistReducer,
+//     middleware: (getDefaultMiddleware) =>
+//         getDefaultMiddleware({
+//             serializableCheck: {
+//                 ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//             },
+//         }),
+// })
+
+export const Persistor = persistStore(Store);
