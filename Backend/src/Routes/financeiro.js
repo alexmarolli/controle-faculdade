@@ -72,7 +72,6 @@ export async function routesFinananceiro(app){
             }
         })
 
-        return ("Financeiro não existe!")
 
         const Pago =  await prisma.financeiro.findMany({
             where:{

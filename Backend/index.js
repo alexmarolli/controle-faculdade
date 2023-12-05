@@ -2,7 +2,7 @@ import Fastify from'fastify';
 import dotnev from 'dotenv/config';
 import { routesUsuario}  from './src/Routes/usuario.js'
 import { routesFinananceiro } from './src/Routes/financeiro.js';
-import { routesDocuments } from './src/Routes/documentos.js';
+import { routesDocuments } from './src/Routes/movimento.js';
 import { routesFormaPagamento } from './src/Routes/formaPagamento.js';
 import { routesParceiro} from './src/Routes/parceiro.js';
 import { routesProduto } from './src/Routes/Produto.js';

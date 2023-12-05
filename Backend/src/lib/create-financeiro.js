@@ -26,5 +26,17 @@ export async function createFinanceiro(parceiro_id,usuarioId,pag_id,credito,dt_v
                 pago:Pago,
             }
         })
+    }else{
+        await prisma.financeiro.create({
+            data:{
+                parceiro_id,
+                Pag_id:pag_id,
+                usuarioId,
+                credito,
+                valor,
+                dt_vencimento,
+                pago:Pago,
+            }
+        })
     }
 }
