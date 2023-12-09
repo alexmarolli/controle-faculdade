@@ -1,6 +1,6 @@
 import { Text } from "react-native";
 
-export function Produtos (){
+export function Pedidos (){
     return(
         <Text>
             teste1

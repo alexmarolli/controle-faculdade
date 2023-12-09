@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { Alert, Text, TouchableOpacity, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import Logo from './assets/logo-Login.svg';
 import User from './assets/User.svg';
 import { TextInput } from 'react-native';
 import { useState } from 'react';
+import { Navigation } from './src/components/TabNavigator';
 
 const LoginScrenn = ({navigation}) =>{
   const [Username, setUsername]= useState('')
@@ -26,7 +28,7 @@ const handleLogin = () => {
 export default function App() {
   return (
     <View className='flex-1 justify-center items-center bg-fundo'>
-      <View className=' bg-gray-300 w-4/5 h-4/6 rounded-2xl items-center justify-center shadow-2xl shadow-gray-300 block'>
+      <View className=' bg-gray-300 w-4/5 h-[560px] rounded-2xl items-center justify-center shadow-2xl shadow-gray-300 block'>
         <Logo></Logo>
         <User className='mt-8'></User>
 
@@ -47,8 +49,11 @@ export default function App() {
               Login
             </Text>
         </TouchableOpacity>
+       
       </View>
-     
+      <NavigationContainer className='bottom-0'>
+          <Navigation/>
+        </NavigationContainer>
       <StatusBar style="auto" />
     </View>
   );
