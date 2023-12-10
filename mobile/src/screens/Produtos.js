@@ -1,6 +1,5 @@
 import { Text, View } from "react-native";
 import { Header } from "../components/header";
-import { Navigation } from "../components/TabNavigator";
 import Pesquisar from '../../assets/Pesquisar.svg'
 import Add from '../../assets/ADD.svg'
 import { TextInput } from "react-native";
@@ -32,7 +31,6 @@ export function Produtos (){
                 
             
             </View>
-            <Navigation/>
         </View>
     )
 }

@@ -15,17 +15,9 @@ import { Produtos } from './src/screens/Produtos.js';
 
 export default function App() {
   return (
-    <View className=' items-center bg-fundo w-full h-full justify-between'>
-    {/* <Login/> */}
-    {/* <Header/>
-      <StatusBar style="auto" />
-
-      <Navigation/> 
-
-      <Home/>
-      <Parceiros/>*/}
-      <Produtos/>
-    </View>
+    <NavigationContainer>
+        <Navigation/>
+    </NavigationContainer>
   );
 }
 
