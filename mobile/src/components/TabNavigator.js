@@ -1,5 +1,6 @@
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import {View, useNavigation} from 'react-native'
+import {View, useNavigation, Button, Touchable, Alert} from 'react-native'
 import {Home} from '../screens/Home.js';
 import {Produtos} from '../screens/Produtos.js'
 import {Financeiro} from '../screens/Financeiro.js'
@@ -16,27 +17,26 @@ const Tab = createBottomTabNavigator();
 export function Navigation(){
     
     return(
-        <View className='w-full bg-transparent mb-0'>
-        <Tab.Navigator>
-                
-                <Tab.Screen name='Produtos' component={Produtos}
-                    options={{tabBarIcon: ({size})=>(<IProdutos name='Produtos' size={size}/>)}}
-                   
-                />
-                <Tab.Screen name='Parceiros' component={Parceiros}
-                    options={{tabBarIcon: ({size})=>(<IParceiros name='Parceiros' size={size}/>)}}
-                />
-                <Tab.Screen name='Home' component={Home} 
-                    options={{tabBarIcon: ({size})=>(<IHome name='Home' size={size}/>)}}
-                />
-                <Tab.Screen name='Financeiro' component={Financeiro}
-                    options={{tabBarIcon: ({size})=>(<IFinanceiro name='Financeiro' size={size}/>)}}
-                />
-                <Tab.Screen name='Pedidos' component={Pedidos}
-                    options={{tabBarIcon: ({size})=>(<IPedidos name='Pedidos' size={size}/>)}}
-                />
+        <View className='w-full flex-row h-12 items-center justify-evenly '>
+            <View>
+                <IProdutos/>
+            </View>
 
-        </Tab.Navigator>
+            <View>
+                <IParceiros/>
+            </View>
+
+            <View>
+                <IHome/>
+            </View>
+
+            <View>
+                <IFinanceiro/>
+            </View>
+
+            <View>
+                <IPedidos/>
+            </View>
         </View>
     )
 }
