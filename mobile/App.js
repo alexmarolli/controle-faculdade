@@ -8,6 +8,8 @@ import { Navigation } from './src/components/TabNavigator';
 import { Login } from './src/screens/Login.js';
 import { Header } from './src/components/header.js';
 import { Home } from './src/screens/Home.js';
+import { Parceiros } from './src/screens/Parceiros.js';
+import { Produtos } from './src/screens/Produtos.js';
 
 
 
@@ -18,9 +20,11 @@ export default function App() {
     {/* <Header/>
       <StatusBar style="auto" />
 
-      <Navigation/> */}
+      <Navigation/> 
 
       <Home/>
+      <Parceiros/>*/}
+      <Produtos/>
     </View>
   );
 }

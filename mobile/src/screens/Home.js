@@ -5,7 +5,7 @@ import { Header } from "../components/header";
 
 export function Home (){
     return(
-        <View className='bg-fundo w-full h-full justify-between'>
+        <View className='w-full h-full justify-between'>
             <Header/>
  
             <View className='bg-slate-400 w-[80%] m-auto h-[200] rounded-lg items-center justify-center     '>

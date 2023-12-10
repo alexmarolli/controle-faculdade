@@ -5,7 +5,7 @@ import { View } from 'react-native'
 
 export function Header () {
     return(
-        <View className='w-[100%] flex-row items-center justify-between h-12 mt-10'>
+        <View className='w-[100%] flex-row items-center justify-between h-12 mt-8'>
             <View className='w-auto ml-4'>
                 <Logo />
             </View>
