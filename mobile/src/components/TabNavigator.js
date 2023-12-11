@@ -20,7 +20,9 @@ export function Navigation(){
         <Tab.Navigator screenOptions={{
             tabBarShowLabel: false,
             tabBarStyle:{
-                backgroundColor: '#1C2B4C'
+                backgroundColor: '#1C2B4C',
+                borderTopWidth: 0,
+                shadowColor:''
             }
         }}>
             <Tab.Screen name='teste' component={Produtos} 

@@ -9,10 +9,10 @@ export function Parceiros (){
 
 
     return(
-        <View className='w-full h-full justify-between'>
+        <View className='w-full h-full justify-between bg-fundo'>
             <Header/>
-            <View className='bg-card w-[80%] h-[560px] m-auto rounded-2xl shadow-lg shadow-slate-200 items-center '>
-                <View className='w-[300px] h-10 items-center rounded-3xl bg-slate-300 mt-2 flex-row p-2 justify-between' >
+            <View className='bg-card w-[320] h-[560px] m-auto rounded-2xl shadow-lg shadow-slate-200 items-center '>
+                <View className='w-[300px] h-10 items-center rounded-3xl bg-[rgba(255, 255, 255, 0.1)] mt-2 flex-row p-2 justify-between' >
                     <Pesquisar/>
                     <TextInput className='ml-2 w-[200px] h-8 m-2' 
                         onChange={Text}/>

@@ -1,9 +1,7 @@
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, TextInput } from "react-native";
 import { Header } from "../components/header";
-import { Navigation } from "../components/TabNavigator";
 import Pesquisar from '../../assets/Pesquisar.svg';
 import Add from '../../assets/ADD.svg';
-import { TextInput } from "react-native";
 import { DivProdutos } from "../components/itens";
 
 export function Produtos() {
@@ -44,7 +42,6 @@ export function Produtos() {
         </View>
 
       </View>
-      <Navigation />
     </View>
   );
 }
