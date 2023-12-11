@@ -1,17 +1,20 @@
 import Logo from '../../assets/logo-Login.svg';
 import User from '../../assets/User.svg';
 import { Alert, Text, TouchableOpacity, View, TextInput} from 'react-native';
+import { useState } from 'react';
 
 
   
   export function Login (){
 
-    const LoginScrenn = ({navigation}) =>{
-        const [Username, SetUsername]= useState('')
-        const [password, SetPassword]= useState('')
+    const [Username, SetUsername]= useState('')
+    const [password, SetPassword]= useState('')
+
+    function handleLogin () {
+      if( Username ==='' || password === ''){
+        alert('Usuario invalido')
       }
-      
-      
+    } 
       
 
     return(
