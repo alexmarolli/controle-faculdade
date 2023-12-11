@@ -7,9 +7,9 @@ import { Login } from './src/screens/Login';
 
 export default function App() {
   return (
-    // <NavigationContainer>
-    //     <Navigation/>
-    // </NavigationContainer>
-    <Login/>
+     <NavigationContainer>
+         <Navigation/>
+     </NavigationContainer>
+    //<Login/>
   );
 }
