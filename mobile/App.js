@@ -21,14 +21,8 @@ import { ItensProvider } from './src/context/ItensContext';
 
 export default function App() {
   return (
-    <ItensProvider>
-      <View style={{ flex: 1, backgroundColor: 'white' }}>
-        <StatusBar style="auto" />
-        <NavigationContainer>
-          <Navigation />
-        </NavigationContainer>
-        <VerItens />
-      </View>
-    </ItensProvider>
+    <NavigationContainer>
+        <Navigation/>
+    </NavigationContainer>
   );
 }

@@ -17,26 +17,37 @@ const Tab = createBottomTabNavigator();
 export function Navigation(){
     
     return(
-        <View className='w-full flex-row h-12 items-center justify-evenly '>
-            <View>
-                <IProdutos/>
-            </View>
-
-            <View>
-                <IParceiros/>
-            </View>
-
-            <View>
-                <IHome/>
-            </View>
-
-            <View>
-                <IFinanceiro/>
-            </View>
-
-            <View>
-                <IPedidos/>
-            </View>
-        </View>
+        <Tab.Navigator screenOptions={{
+            tabBarShowLabel: false,
+            tabBarStyle:{
+                backgroundColor: '#1C2B4C'
+            }
+        }}>
+            <Tab.Screen name='teste' component={Produtos} 
+                options={{
+                    headerShown:false,
+                    tabBarIcon: ({size})=>(<IProdutos name='Produtos' size={size}/>)}}
+            />
+            <Tab.Screen name='teste 1' component={Parceiros} 
+                options={{
+                    headerShown:false,
+                    tabBarIcon: ({size})=>(<IParceiros name='Parceiros' size={size}/>)}}
+            />
+            <Tab.Screen name='teste2' component={Home} 
+                options={{
+                    headerShown:false,
+                    tabBarIcon: ({size})=>(<IHome name='Home' size={size}/>)}}
+            />
+            <Tab.Screen name='teste3' component={Financeiro} 
+                options={{
+                    headerShown:false,
+                    tabBarIcon: ({size})=>(<IFinanceiro name='Financeiro' size={size}/>)}}
+            />
+            <Tab.Screen name='teste4' component={Pedidos} 
+                options={{
+                    headerShown:false,
+                    tabBarIcon: ({size})=>(<IPedidos name='Pedidos' size={size}/>)}}
+            />
+        </Tab.Navigator>
     )
 }
