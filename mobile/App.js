@@ -14,23 +14,21 @@ import { EditarItens} from './src/screens/EditarItens.js';
 import { VerItens } from './src/screens/VerItens.js';
 import { ExcluirItens } from './src/screens/ExcluirItens.js';
 import { CadastrarItens } from './src/screens/CadastrarItens.js';
+import { ItensProvider } from './src/context/ItensContext';
+
 
 
 
 export default function App() {
   return (
-    <View className=' items-center bg-fundo w-full h-full justify-between'>
-    {/* <Login/> */}
-    {/* <Header/>
-      <StatusBar style="auto" />
-
-      <Navigation/> 
-
-      <Home/>
-      <Parceiros/>*/}
-      <ExcluirItens/>
-    </View>
+    <ItensProvider>
+      <View style={{ flex: 1, backgroundColor: 'white' }}>
+        <StatusBar style="auto" />
+        <NavigationContainer>
+          <Navigation />
+        </NavigationContainer>
+        <VerItens />
+      </View>
+    </ItensProvider>
   );
 }
-
-

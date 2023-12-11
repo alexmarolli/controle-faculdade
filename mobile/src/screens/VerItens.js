@@ -2,55 +2,51 @@ import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
 import { Header } from '../components/header';
 import { Navigation } from '../components/TabNavigator';
+import { useItens } from '../context/ItensContext';
 
 export function VerItens() {
   const [idPesquisa, setIdPesquisa] = useState('');
-  const [itens, setItens] = useState([]);
-
-  const handleVisualizacao = () => {
-    // Aqui você pode adicionar a lógica para buscar os dados do item na API, banco de dados, etc.
-    console.log('ID do Item para Visualizar:', idPesquisa);
-
-    // Simulando o recebimento de itens da fonte de dados
-    const novoItem = { id: idPesquisa };
-    setItens(prevItens => [...prevItens, novoItem]);
-
-    // Limpar os campos após a visualização
-    setIdPesquisa('');
-  };
+  const { itens } = useItens(); // Obtemos os itens do contexto
 
   // Função para realizar a pesquisa com base no ID
   const handlePesquisa = () => {
-    // Aqui você deve implementar a lógica para buscar os itens com o ID especificado
+    // Verifica se há itens antes de filtrar
+    if (!itens || itens.length === 0) {
+      console.log('Nenhum item encontrado. Itens:', itens);
+      return;
+    }
+  
+    // Imprime informações sobre os itens e o ID de pesquisa
+    console.log('Itens disponíveis:', itens);
+    console.log('ID de Pesquisa:', idPesquisa);
+  
+    // Filtra os itens com base no ID especificado
     const itensFiltrados = itens.filter(item => item.id === idPesquisa);
+
     console.log('Itens encontrados:', itensFiltrados);
   };
-
   return (
-    <View className='w-full h-full justify-between'>
+    <View style={{ flex: 1, justifyContent: 'space-between', backgroundColor: '#121212' }}>
       <Header />
 
-      <Text className='text-white text-[32px] mt-3 mx-auto'>Ver Itens</Text>
+      <Text style={{ color: 'white', fontSize: 32, marginTop: 3, marginLeft: 'auto', marginRight: 'auto' }}>
+        Ver Itens
+      </Text>
 
-      <View className='bg-card w-[80%] h-[560px] m-auto rounded-2xl shadow-lg shadow-slate-200 items-center '>
+      <View style={{ backgroundColor: 'white', width: '80%', height: 560, margin: 'auto', borderRadius: 20, alignItems: 'center' }}>
         {/* Barra de pesquisa */}
         <TextInput
-          className='w-[80%] h-30 bg-white m-2 rounded-md p-2'
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 5, borderRadius: 10, padding: 5 }}
           placeholder='Pesquisar por ID'
           value={idPesquisa}
           onChangeText={setIdPesquisa}
         />
 
-        <View className='w-[90%] h-[2px] bg-gray-500 m-2 rounded-full' />
-
-        {/* Botão para visualizar o item */}
-        <TouchableOpacity onPress={handleVisualizacao} className='bg-blue-500 p-2 rounded-md mb-2'>
-          <Text className='text-white'>Visualizar Item</Text>
-        </TouchableOpacity>
+        <View style={{ width: '90%', height: 2, backgroundColor: 'gray', margin: 5, borderRadius: 10 }} />
 
         {/* Botão para pesquisar o item pelo ID */}
-        <TouchableOpacity onPress={handlePesquisa} className='bg-yellow-500 p-2 rounded-md mb-2'>
-          <Text className='text-white'>Pesquisar por ID</Text>
+        <TouchableOpacity onPress={handlePesquisa} style={{ backgroundColor: 'yellow', padding: 10, borderRadius: 10, margin: 10 }}>
+          <Text style={{ color: 'white' }}>Pesquisar por ID</Text>
         </TouchableOpacity>
 
         {/* Lista de itens cadastrados */}
@@ -58,8 +54,8 @@ export function VerItens() {
           data={itens}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
-            <View className='bg-white p-2 m-2 rounded-md'>
-              <Text>{`ID: ${item.id}`}</Text>
+            <View style={{ backgroundColor: 'white', padding: 10, margin: 5, borderRadius: 10 }}>
+              <Text>{`ID: ${item.id}, Nome: ${item.nome}, Descrição: ${item.descricao}, Preço: ${item.preco}`}</Text>
             </View>
           )}
         />

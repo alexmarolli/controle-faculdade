@@ -24,25 +24,27 @@ export function ExcluirItens() {
   };
 
   return (
-    <View className='w-full h-full justify-between'>
+    <View style={{ flex: 1, justifyContent: 'space-between' }}>
       <Header />
 
-      <Text className='text-white text-[32px] mt-3 mx-auto'>Excluir Itens</Text>
+      <Text style={{ color: 'white', fontSize: 32, marginTop: 3, marginLeft: 'auto', marginRight: 'auto' }}>
+        Excluir Itens
+      </Text>
 
-      <View className='bg-card w-[80%] h-[560px] m-auto rounded-2xl shadow-lg shadow-slate-200 items-center '>
+      <View style={{ backgroundColor: 'white', width: '80%', height: 560, margin: 'auto', borderRadius: 20, alignItems: 'center' }}>
         {/* Barra de pesquisa para exclusão */}
         <TextInput
-          className='w-[80%] h-30 bg-white m-2 rounded-md p-2'
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 5, borderRadius: 10, padding: 5 }}
           placeholder='Pesquisar por ID para Excluir'
           value={idPesquisa}
           onChangeText={setIdPesquisa}
         />
 
-        <View className='w-[90%] h-[2px] bg-gray-500 m-2 rounded-full' />
+        <View style={{ width: '90%', height: 2, backgroundColor: 'gray', margin: 5, borderRadius: 10 }} />
 
         {/* Botão para excluir o item */}
-        <TouchableOpacity onPress={handleExclusao} className='bg-red-500 p-2 rounded-md mb-2'>
-          <Text className='text-white'>Excluir Item</Text>
+        <TouchableOpacity onPress={handleExclusao} style={{ backgroundColor: 'red', padding: 10, borderRadius: 10, margin: 10 }}>
+          <Text style={{ color: 'white' }}>Excluir Item</Text>
         </TouchableOpacity>
 
         {/* Lista de itens cadastrados */}
@@ -50,7 +52,7 @@ export function ExcluirItens() {
           data={itens}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
-            <View className='bg-white p-2 m-2 rounded-md'>
+            <View style={{ backgroundColor: 'white', padding: 10, margin: 5, borderRadius: 10 }}>
               <Text>{`ID: ${item.id}, Descrição: ${item.descricao}`}</Text>
             </View>
           )}

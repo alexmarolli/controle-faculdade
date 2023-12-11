@@ -1,75 +1,82 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-import { Header } from '../components/header';
-import { Navigation } from '../components/TabNavigator';
-import Add from '../../assets/ADD.svg';
+import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { useItens } from '../context/ItensContext';
 
 export function CadastrarItens() {
-  // Estados para armazenar os dados do item
+  const { state, dispatch } = useItens();
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
   const [descricao, setDescricao] = useState('');
   const [preco, setPreco] = useState('');
 
-  // Função para lidar com o envio do formulário (cadastro do item)
   const handleCadastro = () => {
-    // Aqui você pode adicionar a lógica para enviar os dados para a API, armazenar no banco de dados, etc.
-    console.log('ID:', id);
-    console.log('Nome:', nome);
-    console.log('Descrição:', descricao);
-    console.log('Preço:', preco);
+    // Verifica se o ID já existe na lista
+    const idExiste = state.itens.some(item => item.id === id);
 
-    // Limpar os campos após o cadastro
+    if (idExiste) {
+      Alert.alert('Erro', 'Este ID já está em uso. Por favor, escolha outro ID.');
+      return;
+    }
+
+    // Verifica se todos os campos estão preenchidos
+    if (!id || !nome || !descricao || !preco) {
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+      return;
+    }
+
+    // Cria um novo item
+    const novoItem = { id, nome, descricao, preco };
+
+    // Despacha a ação para cadastrar o item
+    dispatch({ type: 'CADASTRAR_ITEM', payload: novoItem });
+
+    // Limpa os campos após o cadastro
     setId('');
     setNome('');
     setDescricao('');
     setPreco('');
+
+    Alert.alert('Sucesso', 'Item cadastrado com sucesso!');
   };
 
   return (
-    <View className='w-full h-full justify-between'>
-      <Header />
+    <View style={{ flex: 1, justifyContent: 'space-between', backgroundColor: '#121212' }}>
+      <Text style={{ color: 'white', fontSize: 32, marginTop: 3, marginLeft: 'auto', marginRight: 'auto' }}>
+        Cadastrar Itens
+      </Text>
 
-      <Text className='text-white text-[32px] mt-3 mx-auto'>Cadastrar Itens</Text>
-
-      <View className='bg-card w-[80%] h-[560px] m-auto rounded-2xl shadow-lg shadow-slate-200 items-center '>
-        {/* Campo de entrada para o ID do item */}
+      <View style={{ backgroundColor: 'white', width: '80%', height: 560, margin: 'auto', borderRadius: 20, alignItems: 'center' }}>
         <TextInput
-          className='w-[80%] h-30 bg-white m-2 rounded-md p-2'
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
           placeholder='ID do Item'
           value={id}
           onChangeText={setId}
         />
-
-        {/* Campos de entrada para o cadastro do item */}
         <TextInput
-          className='w-[80%] h-30 bg-white m-2 rounded-md p-2'
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
           placeholder='Nome do Item'
           value={nome}
           onChangeText={setNome}
         />
         <TextInput
-          className='w-[80%] h-30 bg-white m-2 rounded-md p-2'
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
           placeholder='Descrição do Item'
           value={descricao}
           onChangeText={setDescricao}
         />
         <TextInput
-          className='w-[80%] h-30 bg-white m-2 rounded-md p-2'
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
           placeholder='Preço do Item'
           value={preco}
           onChangeText={setPreco}
         />
 
-        <View className='w-[90%] h-[2px] bg-gray-500 m-2 rounded-full' />
+        <View style={{ width: '90%', height: 2, backgroundColor: 'gray', margin: 2, borderRadius: 10 }} />
 
-        {/* Botão para cadastrar o item */}
-        <TouchableOpacity onPress={handleCadastro} className='bg-green-500 p-2 rounded-md mb-2'>
-          <Text className='text-white'>Cadastrar Item</Text>
+        <TouchableOpacity onPress={handleCadastro} style={{ backgroundColor: 'green', padding: 2, borderRadius: 10, margin: 2 }}>
+          <Text style={{ color: 'white' }}>Cadastrar Item</Text>
         </TouchableOpacity>
-
       </View>
-      <Navigation />
     </View>
   );
 }
