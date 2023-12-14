@@ -6,7 +6,6 @@ import {Home} from '../screens/Home.js';
 import {Produtos} from '../screens/Produtos.js'
 import {Financeiro} from '../screens/Financeiro.js'
 import {Parceiros} from '../screens/Parceiros.js';
-import {Pedidos} from '../screens/Pedidos.js'
 import IProdutos from '../../assets/produtos.svg'
 import IParceiros from '../../assets/parceiro.svg'
 import IHome from '../../assets/Home.svg'
@@ -92,7 +91,7 @@ export function Navigation(){
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IFinanceiro name='Financeiro' size={size}/>)}}
             />
-            <Tab.Screen name='Pedidos' component={Pedidos} 
+            <Tab.Screen name='teste4' component={StackNavigator} //Aqui muda para a minha stack navigation que está no routes.js
                 options={{
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IPedidos name='Pedidos' size={size}/>)}}
