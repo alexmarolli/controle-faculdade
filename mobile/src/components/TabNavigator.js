@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {View, useNavigation, Button, Touchable, Alert} from 'react-native'
+import {View, useNavigation, Button, Touchable, Alert} from 'react-native';
 import {Home} from '../screens/Home.js';
 import {Produtos} from '../screens/Produtos.js'
 import {Financeiro} from '../screens/Financeiro.js'
@@ -16,6 +16,7 @@ import { ItensProvider } from '../context/ItensContext.js';
 import { VerItens } from '../screens/VerItens.js';
 import { EditarItens } from '../screens/EditarItens.js';
 import {ExcluirItens} from '../screens/ExcluirItens.js';
+import StackNavigator from './routes.js';
 
 const Tab = createBottomTabNavigator();
 

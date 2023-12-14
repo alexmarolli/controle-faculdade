@@ -37,6 +37,7 @@ export function CadastrarItens({Navigation}) {
     setPreco('');
 
     Alert.alert('Sucesso', 'Item cadastrado com sucesso!');
+    console.log(novoItem);
   };
 
   return (

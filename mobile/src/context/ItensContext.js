@@ -31,6 +31,7 @@ const ItensProvider = ({ children }) => {
   );
 };
 
+
 const useItens = () => {
   const context = useContext(ItensContext);
 
@@ -38,6 +39,7 @@ const useItens = () => {
     throw new Error('useItens deve ser utilizado dentro de um ItensProvider');
   }
 
+  console.log('Log do context', context);
   return context;
 };
 

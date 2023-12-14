@@ -2,8 +2,10 @@ import { Text, View, TouchableOpacity, TextInput } from "react-native";
 import { Header } from "../components/header";
 import Pesquisar from '../../assets/Pesquisar.svg';
 import Add from '../../assets/ADD.svg';
+import { useNavigation } from '@react-navigation/native';
 
 export function Produtos({Navigation}) {
+  const navigation = useNavigation();
   return (
     <View className='w-full h-full justify-between'>
       <Header />
