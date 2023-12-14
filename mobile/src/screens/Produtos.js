@@ -6,7 +6,7 @@ import { DivProdutos } from "../components/itens";
 
 export function Produtos() {
   return (
-    <View className='w-full h-full justify-between bg-fundo'>
+    <View className='w-full h-full justify-between'>
       <Header />
 
       <Text className='text-white text-[32px] mt-3 mx-auto'>Produtos</Text>
