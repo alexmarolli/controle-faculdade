@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput, FlatList } from 'react-native';
 import { Header } from '../components/header';
-import { Navigation } from '../components/TabNavigator';
 
 export function ExcluirItens() {
   const [idPesquisa, setIdPesquisa] = useState('');
@@ -24,14 +23,14 @@ export function ExcluirItens() {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'space-between' }}>
+    <View style={{ flex: 1, justifyContent: 'space-between', backgroundColor:'#1C2B4C' }}>
       <Header />
 
       <Text style={{ color: 'white', fontSize: 32, marginTop: 3, marginLeft: 'auto', marginRight: 'auto' }}>
         Excluir Itens
       </Text>
 
-      <View style={{ backgroundColor: 'white', width: '80%', height: 560, margin: 'auto', borderRadius: 20, alignItems: 'center' }}>
+      <View style={{ backgroundColor: 'white', width: '80%', height: 560, margin: 'auto', borderRadius: 20, alignItems: 'center', marginLeft: 'auto', marginRight: 'auto', marginBottom:50 }}>
         {/* Barra de pesquisa para exclusão */}
         <TextInput
           style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 5, borderRadius: 10, padding: 5 }}
@@ -59,7 +58,6 @@ export function ExcluirItens() {
         />
 
       </View>
-      <Navigation />
     </View>
   );
 }

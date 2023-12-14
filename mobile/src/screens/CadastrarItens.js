@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { useItens } from '../context/ItensContext';
 
-export function CadastrarItens() {
+export function CadastrarItens({Navigation}) {
   const { state, dispatch } = useItens();
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -40,32 +40,32 @@ export function CadastrarItens() {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'space-between', backgroundColor: '#121212' }}>
+    <View style={{ flex: 1, justifyContent: 'space-evenly', backgroundColor: '#1C2B4C', alignItems: 'center' }}>
       <Text style={{ color: 'white', fontSize: 32, marginTop: 3, marginLeft: 'auto', marginRight: 'auto' }}>
         Cadastrar Itens
       </Text>
 
-      <View style={{ backgroundColor: 'white', width: '80%', height: 560, margin: 'auto', borderRadius: 20, alignItems: 'center' }}>
+      <View style={{ backgroundColor: 'white', width: '80%', height: 560, margin: 'auto', borderRadius: 20, alignItems: 'center', backgroundColor:'' }}>
         <TextInput
-          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10, paddingLeft: 10 }}
           placeholder='ID do Item'
           value={id}
           onChangeText={setId}
         />
         <TextInput
-          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10, paddingLeft: 10 }}
           placeholder='Nome do Item'
           value={nome}
           onChangeText={setNome}
         />
         <TextInput
-          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10,paddingLeft: 10 }}
           placeholder='Descrição do Item'
           value={descricao}
           onChangeText={setDescricao}
         />
         <TextInput
-          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
+          style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10, paddingLeft: 10 }}
           placeholder='Preço do Item'
           value={preco}
           onChangeText={setPreco}
@@ -73,10 +73,11 @@ export function CadastrarItens() {
 
         <View style={{ width: '90%', height: 2, backgroundColor: 'gray', margin: 2, borderRadius: 10 }} />
 
-        <TouchableOpacity onPress={handleCadastro} style={{ backgroundColor: 'green', padding: 2, borderRadius: 10, margin: 2 }}>
-          <Text style={{ color: 'white' }}>Cadastrar Item</Text>
+        <TouchableOpacity onPress={handleCadastro} style={{ backgroundColor: 'green', borderRadius: 10, margin: 2,height:40, width: 150, justifyContent:'center', margin:10 }}>
+          <Text style={{ color: 'white', marginLeft:'auto', marginRight:'auto' }}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
     </View>
+    
   );
 }

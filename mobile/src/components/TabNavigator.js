@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {View, useNavigation, Button, Touchable, Alert} from 'react-native'
 import {Home} from '../screens/Home.js';
 import {Produtos} from '../screens/Produtos.js'
@@ -11,8 +12,52 @@ import IParceiros from '../../assets/parceiro.svg'
 import IHome from '../../assets/Home.svg'
 import IFinanceiro from '../../assets/Financeiro.svg'
 import IPedidos from '../../assets/Pedidos.svg'
+import { CadastrarItens } from '../screens/CadastrarItens.js';
+import { ItensProvider } from '../context/ItensContext.js';
+import { VerItens } from '../screens/VerItens.js';
+import { EditarItens } from '../screens/EditarItens.js';
+import {ExcluirItens} from '../screens/ExcluirItens.js';
 
 const Tab = createBottomTabNavigator();
+
+const ProdStack = createNativeStackNavigator()
+
+    const CadastrarItensWithProvider = () => (
+    <ItensProvider>
+      <CadastrarItens />
+    </ItensProvider>
+    );
+    const VerItensProvider=() =>(
+        <ItensProvider>
+            <VerItens/>
+        </ItensProvider>
+    );
+
+    const EditarItensProvider = () => (
+        <ItensProvider>
+            <EditarItens/>
+        </ItensProvider>
+    );
+
+    const ExcluirItensProvider = () =>(
+        <ItensProvider>
+            <ExcluirItens/>
+        </ItensProvider>
+    );
+    
+
+function stackProduto(){
+    return(
+        <ProdStack.Navigator screenOptions={{headerShown:false}}>
+            <ProdStack.Screen name='Home' component={Produtos}/>
+            <ProdStack.Screen name='criar itens' component={CadastrarItensWithProvider}/>
+            <ProdStack.Screen name='Ver itens' component={VerItensProvider}/>
+            <ProdStack.Screen name='Editar' component={EditarItensProvider}/>
+            <ProdStack.Screen name='Excluir' component={ExcluirItensProvider}/>
+        </ProdStack.Navigator>
+    )
+}
+
 
 export function Navigation(){
     
@@ -25,27 +70,29 @@ export function Navigation(){
                 shadowColor:''
             }
         }}>
-            <Tab.Screen name='teste' component={Produtos} 
+            <Tab.Screen name='Produto' component={stackProduto} 
                 options={{
                     headerShown:false,
-                    tabBarIcon: ({size})=>(<IProdutos name='Produtos' size={size}/>)}}
+                    tabBarIcon: ({size})=>{(<IProdutos name='Produtos' size={size}/>)}}
+                        
+                    }
             />
-            <Tab.Screen name='teste 1' component={Parceiros} 
+            <Tab.Screen name='Parceiros' component={Parceiros} 
                 options={{
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IParceiros name='Parceiros' size={size}/>)}}
             />
-            <Tab.Screen name='teste2' component={Home} 
+            <Tab.Screen name='Home' component={Home} 
                 options={{
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IHome name='Home' size={size}/>)}}
             />
-            <Tab.Screen name='teste3' component={Financeiro} 
+            <Tab.Screen name='Financeiro' component={Financeiro} 
                 options={{
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IFinanceiro name='Financeiro' size={size}/>)}}
             />
-            <Tab.Screen name='teste4' component={Pedidos} 
+            <Tab.Screen name='Pedidos' component={Pedidos} 
                 options={{
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IPedidos name='Pedidos' size={size}/>)}}

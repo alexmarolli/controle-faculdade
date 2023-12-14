@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
 import { Header } from '../components/header';
-import { Navigation } from '../components/TabNavigator';
 import Add from '../../assets/ADD.svg';
 
-export function EditarItens() {
+export function EditarItens({Navigation}) {
   // Estados para armazenar os dados do item
   const [nome, setNome] = useState('');
   const [descricao, setDescricao] = useState('');
@@ -35,7 +34,7 @@ export function EditarItens() {
   };
 
   return (
-    <View className='w-full h-full justify-between'>
+    <View className='w-full h-full justify-between bg-fundo'>
       <Header />
 
       <Text className='text-white text-[32px] mt-3 mx-auto'>Editar Itens</Text>
@@ -43,19 +42,19 @@ export function EditarItens() {
       <View className='bg-card w-[80%] h-[560px] m-auto rounded-2xl shadow-lg shadow-slate-200 items-center '>
         {/* Campos de entrada para a edição do item */}
         <TextInput
-          className='w-[80%] h-30 bg-white m-2 rounded-md p-2'
+          className='w-[80%] h-30 bg-white m-2 rounded-full p-2 mt-3'
           placeholder='Nome do Item'
           value={nome}
           onChangeText={setNome}
         />
         <TextInput
-          className='w-[80%] h-30 bg-white m-2 rounded-md p-2'
+          className='w-[80%] h-30 bg-white m-2 rounded-full p-2'
           placeholder='Descrição do Item'
           value={descricao}
           onChangeText={setDescricao}
         />
         <TextInput
-          className='w-[80%] h-30 bg-white m-2 rounded-md p-2'
+          className='w-[80%] h-30 bg-white m-2 rounded-full p-2'
           placeholder='Preço do Item'
           value={preco}
           onChangeText={setPreco}
@@ -64,12 +63,11 @@ export function EditarItens() {
         <View className='w-[90%] h-[2px] bg-gray-500 m-2 rounded-full' />
 
         {/* Botão para editar o item */}
-        <TouchableOpacity onPress={handleEdicao} className='bg-yellow-500 p-2 rounded-md mb-2'>
+        <TouchableOpacity onPress={handleEdicao} className='bg-green-600 p-2 rounded-full mt-2 w-[150] justify-center items-center'>
           <Text className='text-white'>Editar Item</Text>
         </TouchableOpacity>
 
       </View>
-      <Navigation />
     </View>
   );
 }
