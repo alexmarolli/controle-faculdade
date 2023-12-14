@@ -5,12 +5,12 @@ import {Home} from '../screens/Home.js';
 import {Produtos} from '../screens/Produtos.js'
 import {Financeiro} from '../screens/Financeiro.js'
 import {Parceiros} from '../screens/Parceiros.js';
-import {Pedidos} from '../screens/Pedidos.js'
 import IProdutos from '../../assets/produtos.svg'
 import IParceiros from '../../assets/parceiro.svg'
 import IHome from '../../assets/Home.svg'
 import IFinanceiro from '../../assets/Financeiro.svg'
 import IPedidos from '../../assets/Pedidos.svg'
+import StackNavigator from './routes.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +45,7 @@ export function Navigation(){
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IFinanceiro name='Financeiro' size={size}/>)}}
             />
-            <Tab.Screen name='teste4' component={Pedidos} 
+            <Tab.Screen name='teste4' component={StackNavigator} 
                 options={{
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IPedidos name='Pedidos' size={size}/>)}}
