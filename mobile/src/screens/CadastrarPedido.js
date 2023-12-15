@@ -1,78 +1,58 @@
-import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, TextInput, Alert } from 'react-native';
-import { UsePedidos } from '../context/PedidosContext';
+import React, { useContext, useState } from 'react';
+import { Text, View, TextInput, Alert, Button } from 'react-native';
+import { PedidosContext } from '../context/PedidosContext';
 
 export function CadastrarPedidos({ navigation }) {
-    const { state, dispatch } = UsePedidos();
-    const [id, setId] = useState('');
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [preco, setPreco] = useState('');
+    const {pedidos, setPedidos} = useContext(PedidosContext);
 
 
     const handleCadastro = () => {
-
-        const idExiste = state.pedidos.some(pedidos => pedidos.id === id);
-
-        if (idExiste) {
-            Alert.alert('Erro', 'Este ID está em uso. Por favor, escolha outro ID.');
-            return;
-        }
-
-        if (!id || !nome || !descricao || !preco) {
-            Alert.alert('Erro', 'Porfavor, preencha todos os campos.');
-            return;
-        }
-        const NovoPedido = { id, nome, descricao, preco };
-
-        dispatch({ type: 'cadastrar_pedido', payload: NovoPedido });
-
-
-        setId('');
-        setNome('');
-        setDescricao('');
-        setPreco('');
-
+        setPedidos((currentPedidos) => [
+            ...currentPedidos,
+            {nome, descricao, preco },   
+        ]);
         Alert.alert('Sucesso', 'Pedido cadastrado com sucesso!');
     };
 
     return (
-        <View style={{ flex: 1, justifyContent: 'space-between', backgroundColor: '#121212'}}>
-            <Text style={{ color: 'white', fontSize: 32, marginTop: 3, marginLeft: 'auto', marginRight: 'auto' }}>
+        <View style={{ flex: 1, justifyContent: 'space-between', backgroundColor: '#1C2B4C', alignItems: 'center', }}>
+            <Text style={{ color: 'white', fontSize: 32, marginTop: 100, marginLeft: 'auto', marginRight: 'auto' }}>
                 Cadastrar Pedidos
             </Text>
 
-            <View style={{ backgroundColor: 'white', width: '80%', height: 560, margin: 'auto', borderRadius: 20, alignItems: 'center' }}>
-                <TextInput
-                    style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
-                    placeholder='ID do Pedido'
-                    value={id}
-                    onChangeText={setId}
-                />
-                <TextInput
-                    style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
+            <View style={{  width: '80%', height: 400, borderRadius: 20, alignItems: 'center' }}>
+
+            <TextInput placeholder="Nome" onChangeText={setNome} />
+            <TextInput placeholder="Descrição" onChangeText={setDescricao} />
+            <TextInput placeholder="Valor" onChangeText={setPreco} />
+            <Button title="Adicionar Pedido" onPress={handleCadastro} />
+
+
+
+                {/*<TextInput
+                    style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10, paddingLeft: 10 }}
                     placeholder='Nome do Pedido'
-                    value={nome}
                     onChangeText={setNome}
                 />
                 <TextInput
-                    style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2 }}
+                    style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10, paddingLeft: 10 }}
                     placeholder='Descrição do Pedido'
-                    value={descricao}
                     onChangeText={setDescricao}
                 />
                 <TextInput
-                    style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 2, borderRadius: 10, padding: 2}}
+                    style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10, paddingLeft: 10 }}
                     placeholder='Preço do Pedido'
-                    value={preco}
                     onChangeText={setPreco}
-                />
+    />*/}
 
                 <View style={{ width: '90%', height: 2, backgroundColor: 'gray', margin: 2, borderRadius: 10 }} />
 
-                <TouchableOpacity onPress={handleCadastro} style={{ backgroundColor: 'green', padding: 2, borderRadius: 10, margin: 2 }}>
-                    <Text style={{ color: 'white' }}>Cadastrar Pedido</Text>
-                </TouchableOpacity>
+                {/*<TouchableOpacity onPress={handleCadastro} style={{ backgroundColor: 'green', borderRadius: 10, margin: 2,height:40, width: 150, justifyContent:'center', margin:10 }}>
+                    <Text style={{ color: 'white', marginLeft:'auto', marginRight:'auto' }}>Cadastrar Pedido</Text>
+</TouchableOpacity>*/}
             </View>
         </View>
     )

@@ -1,35 +1,33 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const PedidosContext = createContext();
+export const PedidosContext = createContext();
 
-const initialState = {
-    pedidos: [],
-};
-
-const PedidosReducer = (state, action) => {
-    switch (action.type) {
-        case 'cadastrar_pedido':
-            return {
-                ...state,
-                pedidos: [...state.itens, action.payload],
-            };
-        default:
-            return state;
-    };
-};
-
-const PedidosProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(PedidosReducer, initialState);
+const PedidoProvider = ({ children }) => {
+    const [pedidos, setPedidos] = useState([]);
 
     return (
-        <PedidosContext.Provider value={{ state, dispatch}}>
+        <PedidosContext.Provider value={{ pedidos, setPedidos}}>
             {children}
         </PedidosContext.Provider>
     );
 };
 
 
-const UsePedidos = () => {
+/*const PedidosReducer = (state, action) => {
+    switch (action.type) {
+        case 'cadastrar_pedido':
+            return {
+                ...state,
+                pedidos: [...state.pedidos, action.payload],
+            };
+        default:
+            return state;
+    };
+};
+*/
+
+
+const usePedidos = () => {
     const context = useContext(PedidosContext);
     
     if (!context) {
@@ -39,4 +37,4 @@ const UsePedidos = () => {
 };
 
 
-export { PedidosProvider, UsePedidos };
+export { PedidoProvider, usePedidos };
