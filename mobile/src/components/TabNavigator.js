@@ -74,13 +74,14 @@ export function Navigation(){
                 }
             }}
             initialRouteName='Home'>
-                <Tab.Screen name='Produto' component={StackProduto} 
-                    options={{
-                        headerShown:false,
-                        tabBarIcon: ({size})=>(<IProdutos name='Produtos' size={size}/>)}
-                            
-                        }
-                />
+    <Tab.Screen
+  name='Produto'
+  component={StackProduto}
+  options={{
+    headerShown: false,
+    tabBarIcon: ({ size }) => (<IProdutos name='Produtos' size={size} />)
+  }}
+/>
                 <Tab.Screen name='Parceiros' component={Parceiros} 
                     options={{
                         headerShown:false,

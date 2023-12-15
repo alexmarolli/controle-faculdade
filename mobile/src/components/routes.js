@@ -4,7 +4,7 @@ import { Pedidos } from '../screens/Pedidos';
 import { CadastrarPedidos } from '../screens/CadastrarPedido';
 import { AddFinanceiro } from '../screens/FunctionFinanceiro';
 import { Financeiro } from '../screens/Financeiro';
-
+import { CadastrarItens } from '../screens/CadastrarItens';
 const Stack = createStackNavigator();
 
 const PedidosProvider = ()=> (
@@ -19,6 +19,7 @@ const StackNavigator = () => {
         screenOptions={{headerShown:false}}>
         <Stack.Screen name="Pedidos" component={Pedidos} />
         <Stack.Screen name="CadastrarPedidos" component={PedidosProvider} />
+        <Stack.Screen name="CadastrarItens" component={CadastrarItens} />
       </Stack.Navigator>
   );
 };
