@@ -16,7 +16,7 @@ import { ItensProvider } from '../context/ItensContext.js';
 import { VerItens } from '../screens/VerItens.js';
 import { EditarItens } from '../screens/EditarItens.js';
 import {ExcluirItens} from '../screens/ExcluirItens.js';
-import StackNavigator from './routes.js';
+import StackNavigator, { StackFinanceiro } from './routes.js';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +46,7 @@ const ProdStack = createNativeStackNavigator()
     );
     
 
-function stackProduto(){
+function StackProduto(){
     return(
         <ProdStack.Navigator screenOptions={{headerShown:false}}>
             <ProdStack.Screen name='Home' component={Produtos}/>
@@ -67,13 +67,13 @@ export function Navigation(){
             tabBarStyle:{
                 backgroundColor: '#1C2B4C',
                 borderTopWidth: 0,
-                shadowColor:''
             }
-        }}>
-            <Tab.Screen name='Produto' component={stackProduto} 
+        }}
+        initialRouteName='Home'>
+            <Tab.Screen name='Produto' component={StackProduto} 
                 options={{
                     headerShown:false,
-                    tabBarIcon: ({size})=>{(<IProdutos name='Produtos' size={size}/>)}}
+                    tabBarIcon: ({size})=>(<IProdutos name='Produtos' size={size}/>)}
                         
                     }
             />
@@ -87,7 +87,7 @@ export function Navigation(){
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IHome name='Home' size={size}/>)}}
             />
-            <Tab.Screen name='Financeiro' component={Financeiro} 
+            <Tab.Screen name='Financeiro' component={StackFinanceiro} 
                 options={{
                     headerShown:false,
                     tabBarIcon: ({size})=>(<IFinanceiro name='Financeiro' size={size}/>)}}
