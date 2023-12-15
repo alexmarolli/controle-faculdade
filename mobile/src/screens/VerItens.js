@@ -5,29 +5,35 @@ import { useItens } from '../context/ItensContext';
 
 export function VerItens({Navigation}) {
   const [idPesquisa, setIdPesquisa] = useState('');
-  const [produto , setProduto] = useState([]); // Obtemos os itens do contexto
+  //const [itens , setItens] = useState(''); // Obtemos os itens do contexto
+  const { state } = useItens();
+  const itens = state.itens;
+
+
+  console.log('id Pesquisa', idPesquisa);
+  console.log('state itens log: ', itens);
+  console.log('state state log: ', state);
 
   // Função para realizar a pesquisa com base no ID
   const handlePesquisa = () => {
     // Verifica se há itens antes de filtrar
-    if (!produto || produto.length === 0) {
-      console.log(itens);
+    if (!itens || itens.length === 0) {
       console.log('Nenhum item encontrado. Itens:', itens);
       return;
     }
     useEffect(
       fetch('127.0.0.1:3333/informacoes-itens')
       .then((resp)=>resp.json())
-      .then((json)=>setProduto(json))
+      .then((json)=>setItens(json))
       .catch(()=>(alert('Erro ao carregar item')))
     )
     // Imprime informações sobre os itens e o ID de pesquisa
-    console.log('Itens disponíveis:', produto);
+    console.log('Itens disponíveis:', itens);
     console.log('ID de Pesquisa:', idPesquisa);
   
     // Filtra os itens com base no ID especificado
-    const itemEncontrado = itens.find(produto => produto.id_produto === idPesquisa);
-    console.log('itens total:', produto)
+    const itemEncontrado = itens.find(itens => itens.id_itens === idPesquisa);
+    console.log('itens total:', itens)
     console.log('Itens encontrados:', itemEncontrado);
   };
   return (
@@ -56,11 +62,11 @@ export function VerItens({Navigation}) {
 
         {/* Lista de itens cadastrados */}
         <FlatList
-          data={produto}
+          data={itens}
           keyExtractor={(id, index) => index.toString()}
-          renderItem={({ produto }) => (
+          renderItem={({ itens }) => (
             <View style={{ backgroundColor: 'white', padding: 10, margin: 5, borderRadius: 10 }}>
-              <Text>{`ID: ${produto.id_produto}, Nome: ${produto.descricao}, Descrição: ${produto.preco_V}`}</Text>
+              <Text>{`ID: ${itens.id_itens}, Nome: ${itens.descricao}, Descrição: ${itens.preco_V}`}</Text>
             </View>
           )}
           maxToRenderPerBatch={10}
