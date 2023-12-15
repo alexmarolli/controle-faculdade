@@ -11,6 +11,7 @@ export function VerItens({Navigation}) {
   const handlePesquisa = () => {
     // Verifica se há itens antes de filtrar
     if (!itens || itens.length === 0) {
+      console.log(itens);
       console.log('Nenhum item encontrado. Itens:', itens);
       return;
     }
@@ -20,9 +21,9 @@ export function VerItens({Navigation}) {
     console.log('ID de Pesquisa:', idPesquisa);
   
     // Filtra os itens com base no ID especificado
-    const itensFiltrados = itens.filter(item => item.id === idPesquisa);
-
-    console.log('Itens encontrados:', itensFiltrados);
+    const itemEncontrado = itens.find(item => item.id === idPesquisa);
+    console.log('itens total:', item)
+    console.log('Itens encontrados:', itemEncontrado);
   };
   return (
     <View style={{ flex: 1, justifyContent: 'space-between', backgroundColor: '#1C2B4C' }}>
@@ -38,7 +39,7 @@ export function VerItens({Navigation}) {
           style={{ width: '80%', height: 30, backgroundColor: 'white', marginTop: 15, borderRadius: 10 }}
           placeholder='Pesquisar por ID'
           value={idPesquisa}
-          onChange={({}) => setIdPesquisa({})}
+          onChangeText={(text) => setIdPesquisa(text)}
         />
 
         <View style={{ width: '90%', height: 2, backgroundColor: 'gray', margin: 5, borderRadius: 10 }} />

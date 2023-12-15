@@ -1,7 +1,7 @@
 // ItensContext.js
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
-const ItensContext = createContext();
+
 
 const initialState = {
   itens: [], // Certifique-se de inicializar itens como um array vazio
@@ -21,8 +21,14 @@ const itensReducer = (state, action) => {
   }
 };
 
+const ItensContext = createContext();
+
 const ItensProvider = ({ children }) => {
   const [state, dispatch] = useReducer(itensReducer, initialState);
+
+  useEffect(() => {
+    console.log('State atualizado:', state);
+  }, [state]);
 
   return (
     <ItensContext.Provider value={{ state, dispatch }}>
@@ -39,8 +45,13 @@ const useItens = () => {
     throw new Error('useItens deve ser utilizado dentro de um ItensProvider');
   }
 
-  console.log('Log do context', context);
+  const { state, dispatch } = context;
+
+  useEffect(() => {
+    console.log('Log do state atualizado:', state);
+  }, [state]);
+
+  console.log('Log do dispatch atualizado:', dispatch);
   return context;
 };
-
 export { ItensProvider, useItens };
