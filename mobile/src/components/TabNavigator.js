@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {View, useNavigation, Button, Touchable, Alert} from 'react-native';
+import {View, useNavigation, Button, Touchable, Alert, KeyboardAvoidingView} from 'react-native';
 import {Home} from '../screens/Home.js';
 import {Produtos} from '../screens/Produtos.js'
 import {Financeiro} from '../screens/Financeiro.js'
@@ -62,41 +62,46 @@ function StackProduto(){
 export function Navigation(){
     
     return(
-        <Tab.Navigator screenOptions={{
-            tabBarShowLabel: false,
-            tabBarStyle:{
-                backgroundColor: '#1C2B4C',
-                borderTopWidth: 0,
-            }
-        }}
-        initialRouteName='Home'>
-            <Tab.Screen name='Produto' component={StackProduto} 
-                options={{
-                    headerShown:false,
-                    tabBarIcon: ({size})=>(<IProdutos name='Produtos' size={size}/>)}
-                        
-                    }
-            />
-            <Tab.Screen name='Parceiros' component={Parceiros} 
-                options={{
-                    headerShown:false,
-                    tabBarIcon: ({size})=>(<IParceiros name='Parceiros' size={size}/>)}}
-            />
-            <Tab.Screen name='Home' component={Home} 
-                options={{
-                    headerShown:false,
-                    tabBarIcon: ({size})=>(<IHome name='Home' size={size}/>)}}
-            />
-            <Tab.Screen name='Financeiro' component={StackFinanceiro} 
-                options={{
-                    headerShown:false,
-                    tabBarIcon: ({size})=>(<IFinanceiro name='Financeiro' size={size}/>)}}
-            />
-            <Tab.Screen name='teste4' component={StackNavigator} //Aqui muda para a minha stack navigation que está no routes.js
-                options={{
-                    headerShown:false,
-                    tabBarIcon: ({size})=>(<IPedidos name='Pedidos' size={size}/>)}}
-            />
-        </Tab.Navigator>
+        <KeyboardAvoidingView
+            style={{ flex: 1 }}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+            <Tab.Navigator screenOptions={{
+                tabBarShowLabel: false,
+                tabBarStyle:{
+                    backgroundColor: '#1C2B4C',
+                    borderTopWidth: 0,
+                }
+            }}
+            initialRouteName='Home'>
+                <Tab.Screen name='Produto' component={StackProduto} 
+                    options={{
+                        headerShown:false,
+                        tabBarIcon: ({size})=>(<IProdutos name='Produtos' size={size}/>)}
+                            
+                        }
+                />
+                <Tab.Screen name='Parceiros' component={Parceiros} 
+                    options={{
+                        headerShown:false,
+                        tabBarIcon: ({size})=>(<IParceiros name='Parceiros' size={size}/>)}}
+                />
+                <Tab.Screen name='Home' component={Home} 
+                    options={{
+                        headerShown:false,
+                        tabBarIcon: ({size})=>(<IHome name='Home' size={size}/>)}}
+                />
+                <Tab.Screen name='Financeiro' component={StackFinanceiro} 
+                    options={{
+                        headerShown:false,
+                        tabBarIcon: ({size})=>(<IFinanceiro name='Financeiro' size={size}/>)}}
+                />
+                <Tab.Screen name='teste4' component={StackNavigator} //Aqui muda para a minha stack navigation que está no routes.js
+                    options={{
+                        headerShown:false,
+                        tabBarIcon: ({size})=>(<IPedidos name='Pedidos' size={size}/>)}}
+                />
+            </Tab.Navigator>
+        </KeyboardAvoidingView>
     )
 }

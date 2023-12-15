@@ -41,12 +41,12 @@ export function CadastrarItens({Navigation}) {
   };
 
   return (
-    <View style={{ flex: 1, justifyContent: 'space-evenly', backgroundColor: '#1C2B4C', alignItems: 'center' }}>
-      <Text style={{ color: 'white', fontSize: 32, marginTop: 3, marginLeft: 'auto', marginRight: 'auto' }}>
+    <View style={{ flex: 1, justifyContent: 'space-between', backgroundColor: '#1C2B4C', alignItems: 'center', }}>
+      <Text style={{ color: 'white', fontSize: 32, marginTop: 100, marginLeft: 'auto', marginRight: 'auto' }}>
         Cadastrar Itens
       </Text>
 
-      <View style={{ backgroundColor: 'white', width: '80%', height: 560, margin: 'auto', borderRadius: 20, alignItems: 'center', backgroundColor:'' }}>
+      <View style={{  width: '80%', height: 400, borderRadius: 20, alignItems: 'center' }}>
         <TextInput
           style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10, paddingLeft: 10 }}
           placeholder='ID do Item'
@@ -63,7 +63,7 @@ export function CadastrarItens({Navigation}) {
           style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10,paddingLeft: 10 }}
           placeholder='Descrição do Item'
           value={descricao}
-          onChangeText={setDescricao}
+          onChangeText={(Text)=>setDescricao(Text)}
         />
         <TextInput
           style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10, paddingLeft: 10 }}

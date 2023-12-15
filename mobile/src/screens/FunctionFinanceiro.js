@@ -6,19 +6,24 @@ import { useState } from "react";
 export function AddFinanceiro({Navigation}) {
 
     const [selectedValue, setSelectedValue]= useState('')
+
+    const HandleDataChange = ()=>{
+      setDate(Text)
+    }
+
     return(
         <View className='bg-fundo w-full h-full'>
             <View className='w-[320] h-[560] bg-card m-auto rounded-2xl '>
-                <View className='flex-row'>
+                <View className='flex-row justify-between'>
                     <Text className='text-gray-800'> Informe o parceiro: </Text>
                     <TextInput className=' rounded-full w-[50%] h-5 bg-slate-200' placeholder="Codigo ou Nome"></TextInput>
                 </View>
-                <View className='flex-row'>
+                <View className='flex-row justify-between'>
                     <Text className='text-gray-800'> Informe o valor: </Text>
                     <TextInput className=' rounded-full w-[50%] h-5 bg-slate-200' placeholder="Codigo ou Nome"></TextInput>
                 </View>
-                <View className='flex-row'>
-                    <Text className='text-gray-800'> Informe o vencimento: </Text>
+                <View className='flex-row justify-between'>
+                    <Text className='text-gray-800'> Forma de Pagamento: </Text>
                     <Picker 
                         selectedValue={selectedValue}
                         onValueChange={(itemValue, itemIndex) =>setSelectedValue(itemValue)}
@@ -30,9 +35,15 @@ export function AddFinanceiro({Navigation}) {
                         <Picker.Item label='Cheque' value='3'/>
                     </Picker>
                 </View>
-                <View className='flex-row'>
+                <View className='flex-row justify-between'>
                     <Text className='text-gray-800'> Informe form pgto: </Text>
-                    <TextInput className=' rounded-full w-[50%] h-5 bg-slate-200' placeholder="Codigo ou Nome"></TextInput>
+                    <TextInput 
+                      className=' rounded-full w-[50%] h-5 bg-slate-200' placeholder="Data" 
+                      value={Date}
+                      onChange={HandleDataChange}
+                      keyboardType="numeric"
+                      maxLength={10}
+                    />
                 </View>
             </View>
         </View>
@@ -40,9 +51,9 @@ export function AddFinanceiro({Navigation}) {
 }
 const styles = StyleSheet.create({
     container: {
-      marginTop: 20,
+      marginTop: 8,
       marginLeft: 10,
-      marginRight: 10,
+      
     },
     label: {
       fontSize: 18,
