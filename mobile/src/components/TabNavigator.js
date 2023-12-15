@@ -17,8 +17,41 @@ import { VerItens } from '../screens/VerItens.js';
 import { EditarItens } from '../screens/EditarItens.js';
 import {ExcluirItens} from '../screens/ExcluirItens.js';
 import StackNavigator, { StackFinanceiro } from './routes.js';
+{/* Pedidos Import*/}
+import { PedidoProvider } from '../context/PedidosContext.js';
+import { CadastrarPedidos } from '../screens/CadastrarPedido.js';
+import { VerPedidos } from '../screens/VerPedidos.js';
+import { Pedidos } from '../screens/Pedidos.js';
+{/* Pedidos Import*/}
+
+
 
 const Tab = createBottomTabNavigator();
+
+const PedStack = createNativeStackNavigator()
+
+    const CadastrarPedidosWithProvider = () => (
+        <PedidoProvider>
+            <CadastrarPedidos/>
+        </PedidoProvider>
+    );
+
+    const VerPedidosWithProvider = () => (
+        <PedidoProvider>
+            <VerPedidos/>
+        </PedidoProvider>
+    )
+
+function StackPedido(){
+    return(
+        <PedStack.Navigator screenOptions={{headerShown:false}}>
+            <PedStack.Screen name='Home' component={Pedidos} />
+            <PedStack.Screen name='Cadastrar Pedidos' component={CadastrarPedidosWithProvider} />
+            <PedStack.Screen name='Ver Pedidos' component={VerPedidosWithProvider} />
+        </PedStack.Navigator>
+    )
+}
+
 
 const ProdStack = createNativeStackNavigator()
 
@@ -97,7 +130,7 @@ export function Navigation(){
                         headerShown:false,
                         tabBarIcon: ({size})=>(<IFinanceiro name='Financeiro' size={size}/>)}}
                 />
-                <Tab.Screen name='teste4' component={StackNavigator} //Aqui muda para a minha stack navigation que está no routes.js
+                <Tab.Screen name='Pedidos' component={StackPedido}
                     options={{
                         headerShown:false,
                         tabBarIcon: ({size})=>(<IPedidos name='Pedidos' size={size}/>)}}
