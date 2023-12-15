@@ -17,7 +17,6 @@ export function Produtos({Navigation}) {
           <Pesquisar />
           <TextInput
             className='ml-2 w-[200px] h-8 m-2'
-            onChange={Text}
             placeholder='Pesquisar'
           />
           <View className='w-8'>

@@ -7,6 +7,7 @@ export async function routesParceiro(app){
                 parceiro_id: 'asc'
             }
         })
+        console.log(parceiro)
         return parceiro;
         
     })
