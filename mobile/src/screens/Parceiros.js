@@ -22,8 +22,7 @@ export function Parceiros (){
                 </View>
                 <View className='w-[90%] h-[2px] bg-gray-500 m-2 rounded-full'/>
 
-                
-                    <DivParceiros/>
+                <DivParceiros/>
              
                 
             

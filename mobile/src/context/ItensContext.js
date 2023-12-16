@@ -1,12 +1,9 @@
 // ItensContext.js
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
-<<<<<<< HEAD
-=======
 
 const ItensContext = createContext();
 
->>>>>>> 548bc4f9174bf88209cdde692321bb7e12cc9bac
 const initialState = {
   itens: [],
 };
@@ -45,15 +42,12 @@ const useItens = () => {
     throw new Error('useItens deve ser utilizado dentro de um ItensProvider');
   }
 
-<<<<<<< HEAD
-=======
   const { state, dispatch } = context;
 
   useEffect(() => {
     console.log('Log do state atualizado:', state);
   }, [state]);
 
->>>>>>> 548bc4f9174bf88209cdde692321bb7e12cc9bac
   return context;
 };
 

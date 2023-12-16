@@ -52,6 +52,7 @@ export function CadastrarItens({ Navigation }) {
           placeholder='ID do Item'
           value={id}
           onChangeText={setId}
+          keyboardType='numeric'
         />
         <TextInput
           style={{ width: '80%', height: 30, backgroundColor: 'white', margin: 10, borderRadius: 10, paddingLeft: 10 }}
@@ -70,6 +71,7 @@ export function CadastrarItens({ Navigation }) {
           placeholder='Preço do Item'
           value={preco}
           onChangeText={setPreco}
+          keyboardType='numeric'
         />
 
         <View style={{ width: '90%', height: 2, backgroundColor: 'gray', margin: 2, borderRadius: 10 }} />

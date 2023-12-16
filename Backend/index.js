@@ -12,7 +12,7 @@ import fastifyCors from '@fastify/cors';
 const app=Fastify()
 
 app.register(fastifyCors, {
-    origin: 'http://localhost:3000',
+    origin: '*',
   });
 
 routesUsuario(app);

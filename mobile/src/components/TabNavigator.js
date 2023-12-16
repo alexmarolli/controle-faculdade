@@ -44,9 +44,9 @@ const PedStack = createNativeStackNavigator()
 
 function StackPedido(){
     return(
-        <PedStack.Navigator screenOptions={{headerShown:false}}>
-            <PedStack.Screen name='Home' component={Pedidos} />
+        <PedStack.Navigator initialRouteName='Cadastrar Pedidos' screenOptions={{headerShown:false}}>
             <PedStack.Screen name='Cadastrar Pedidos' component={CadastrarPedidosWithProvider} />
+            <PedStack.Screen name='Home' component={Pedidos} />
             <PedStack.Screen name='Ver Pedidos' component={VerPedidosWithProvider} />
         </PedStack.Navigator>
     )
